@@ -53,7 +53,7 @@ inline long getSeed()
 #endif
 
 static std::default_random_engine prng(getSeed());
-static std::normal_distribution<> normal_dist(1.0, 0.001);
+static std::normal_distribution<> normal_dist(1.0, 0.0002);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -127,11 +127,11 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.stmix = 0.596385f;
             break;
         case 5:
-            // current score 10992 (367)
-            bestparams.threshold = 0.933451474f;
-            bestparams.pulsestrength = 3.04320669f;
-            bestparams.distance1 = 1.01660681f;
-            bestparams.distance2 = 1.19298482f;
+            // current score 10966 (365)
+            bestparams.threshold = 0.93361032f;
+            bestparams.pulsestrength = 3.0441184f;
+            bestparams.distance1 = 1.01603663f;
+            bestparams.distance2 = 1.19291425f;
             break;
         case 6:
             // current score 5532 (298)
@@ -165,11 +165,11 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.stmix = 0.53945446f;
             break;
         case 5:
-            // current score 9924 (426)
-            bestparams.threshold = 0.927432716f;
-            bestparams.pulsestrength = 2.37539339f;
-            bestparams.distance1 = 1.00424087f;
-            bestparams.distance2 = 1.2061156f;
+            // current score 9922 (424)
+            bestparams.threshold = 0.927246153f;
+            bestparams.pulsestrength = 2.37208962f;
+            bestparams.distance1 = 1.00441122f;
+            bestparams.distance2 = 1.20633698f;
             break;
         case 6:
             // current score 12332 (857)
@@ -854,13 +854,13 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance2 = 0.184085369f;
             break;
         case 7:
-            // current score 2120 (55)
-            bestparams.threshold = 0.945680082f;
-            bestparams.pulsestrength = 1.08290601f;
-            bestparams.topbit = 0.996945083f;
-            bestparams.distance1 = 0.935811639f;
-            bestparams.distance2 = 2.05300689f;
-            bestparams.stmix = 0.558153927f;
+            // current score 2118 (54)
+            bestparams.threshold = 0.946992695f;
+            bestparams.pulsestrength = 1.09667945f;
+            bestparams.topbit = 0.995859802f;
+            bestparams.distance1 = 0.941672206f;
+            bestparams.distance2 = 2.01391125f;
+            bestparams.stmix = 0.563315094f;
             break;
         }
         break;
