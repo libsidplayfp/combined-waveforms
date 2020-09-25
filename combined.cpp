@@ -1,7 +1,7 @@
 /*
  * This file is part of libsidplayfp, a SID player engine.
  *
- * Copyright 2013-2016 Leandro Nini <drfiemost@users.sourceforge.net>
+ * Copyright 2013-2020 Leandro Nini <drfiemost@users.sourceforge.net>
  * Copyright 2007-2010 Antti Lankila
  *
  * This program is free software; you can redistribute it and/or modify
@@ -134,12 +134,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance2 = 1.19291425f;
             break;
         case 6:
-            // current score 5532 (298)
-            bestparams.threshold = 0.906489253f;
-            bestparams.pulsestrength = 3.24875951f;
-            bestparams.topbit = 1.57458532f; // ???
-            bestparams.distance1 = 0.101274647f;
-            bestparams.distance2 = 0.188963249f;
+            // current score 5528 (297)
+            bestparams.threshold = 0.906388283f;
+            bestparams.pulsestrength = 3.24655199f;
+            bestparams.topbit = 1.5743562f; // ???
+            bestparams.distance1 = 0.101219185f;
+            bestparams.distance2 = 0.18899554f;
             break;
         case 7:
             // current score 850 (60)
@@ -234,7 +234,7 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
         case 3:
             // current score 240 (64)
             bestparams.threshold = 0.99254179f;
-            bestparams.topbit = 0.001f;
+            bestparams.topbit = 0.f;
             bestparams.distance1 = 7.18324232f;
             bestparams.distance2 = 6.00581455f;
             bestparams.stmix = 0.841992021f;
@@ -256,12 +256,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             break;
         case 7:
             // current score 2 (2)
-            bestparams.threshold = 0.896021485f;
+            bestparams.threshold = 0.89575851f;
             bestparams.pulsestrength = 0.865568995f;
-            bestparams.topbit = 0.002f;
-            bestparams.distance1 = 0.98756659f;
-            bestparams.distance2 = 1.17235816f;
-            bestparams.stmix = 0.547210157f;
+            bestparams.topbit = 0.f;
+            bestparams.distance1 = 0.986006081f;
+            bestparams.distance2 = 1.17148495f;
+            bestparams.stmix = 0.547324002f;
             break;
         }
         break;
@@ -285,12 +285,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance2 = 1.1484f;
             break;
         case 6:
-            // current score 10639 (569)
-            bestparams.threshold = 0.912298322f;
-            bestparams.pulsestrength = 2.32252741f;
-            bestparams.topbit = 1.10538983f; // ???
-            bestparams.distance1 = 0.0537932068f;
-            bestparams.distance2 = 0.252674758f;
+            // current score 10575 (568)
+            bestparams.threshold = 0.912125707f;
+            bestparams.pulsestrength = 2.32007766f;
+            bestparams.topbit = 1.10602474f; // ???
+            bestparams.distance1 = 0.0538718924f;
+            bestparams.distance2 = 0.251507759f;
             break;
         case 7:
             // current score 64 (2)
@@ -348,9 +348,9 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             // current score 184 (68)
             bestparams.threshold = 0.982668161f;
             bestparams.topbit = 0.001f;
-            bestparams.distance1 = 4.43093681f;
-            bestparams.distance2 = 4.43528938f;
-            bestparams.stmix = 0.775906205f;
+            bestparams.distance1 = 4.431f;
+            bestparams.distance2 = 4.435f;
+            bestparams.stmix = 0.7759f;
             break;
         case 5:
             // current score 6847 (171)
@@ -368,13 +368,13 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance2 = 0.101162158f;
             break;
         case 7:
-            // current score 16 (6)
-            bestparams.threshold = 0.942962408f;
-            bestparams.pulsestrength = 1.57235372f;
+            // current score 12 (4)
+            bestparams.threshold = 0.920725882f;
+            bestparams.pulsestrength = 1.27905869f;
             bestparams.topbit = 0.f;
-            bestparams.distance1 = 1.1614747f;
-            bestparams.distance2 = 1.22249365f;
-            bestparams.stmix = 0.581929862f;
+            bestparams.distance1 = 1.03366196f;
+            bestparams.distance2 = 1.19196999f;
+            bestparams.stmix = 0.521854043f;
             break;
         }
         break;
@@ -444,12 +444,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             break;
         case 7:
             // current score 102 (10)
-            bestparams.threshold = 0.931423545f;
-            bestparams.pulsestrength = 1.41654074f;
-            bestparams.topbit = 0.01f;
+            bestparams.threshold = 0.931187391f;
+            bestparams.pulsestrength = 1.41706371f;
+            bestparams.topbit = 0.f;
             bestparams.distance1 = 1.14805245f;
-            bestparams.distance2 = 1.35858405f;
-            bestparams.stmix = 0.48002857f;
+            bestparams.distance2 = 1.35853684f;
+            bestparams.stmix = 0.48f;
             break;
         }
         break;
@@ -546,11 +546,11 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             break;
         case 6:
             // current score 584 (18)
-            bestparams.threshold = 0.90864867f;
-            bestparams.pulsestrength = 2.22691917f;
-            bestparams.topbit = -0.008f; // ???
-            bestparams.distance1 = 0.120167315f;
-            bestparams.distance2 = 0.119318768f;
+            bestparams.threshold = 0.908709824f;
+            bestparams.pulsestrength = 2.22933149f;
+            bestparams.topbit = -0.003f; // ???
+            bestparams.distance1 = 0.120273024f;
+            bestparams.distance2 = 0.11959032f;
             break;
         case 7:
             // current score 2 (2)
@@ -594,7 +594,7 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             // current score 2 (2)
             bestparams.threshold = 0.901689231f;
             bestparams.pulsestrength = 1.06335056f;
-            bestparams.topbit = 0.004f;
+            bestparams.topbit = 0.f;
             bestparams.distance1 = 1.04226708f;
             bestparams.distance2 = 1.29957008f;
             bestparams.stmix = 0.509225965f;
@@ -606,19 +606,19 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
         switch (wave)
         {
         case 3:
-            // current score 1814 (121)
-            bestparams.threshold = 0.981729865f;
-            bestparams.topbit = 0.001f;
-            bestparams.distance1 = 4.67945051f;
-            bestparams.distance2 = 4.70896149f;
-            bestparams.stmix = 0.791615963f;
+            // current score 1806 (118)
+            bestparams.threshold = 0.981850088f;
+            bestparams.topbit = 0.f;
+            bestparams.distance1 = 4.73386049f;
+            bestparams.distance2 = 5.07241964f;
+            bestparams.stmix = 0.784137607f;
             break;
         case 5:
-            // current score 3748 (113)
-            bestparams.threshold = 0.915575624f;
-            bestparams.pulsestrength = 2.57049465f;
-            bestparams.distance1 = 1.03338766f;
-            bestparams.distance2 = 1.08230126f;
+            // current score 3728 (109)
+            bestparams.threshold = 0.918060482f;
+            bestparams.pulsestrength = 2.61582947f;
+            bestparams.distance1 = 1.03105855f;
+            bestparams.distance2 = 1.0820508f;
             break;
         case 6:
             // current score 269 (74)
@@ -667,12 +667,19 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             break;
         case 7:
             // current score 38 (14)
-            bestparams.threshold = 0.901118755f;
-            bestparams.pulsestrength = 0.904124081f;
-            bestparams.topbit = 0.f;
-            bestparams.distance1 = 1.05176663f;
-            bestparams.distance2 = 1.10776162f;
-            bestparams.stmix = 0.618260384f;
+            bestparams.threshold = 0.902411819f;
+            bestparams.pulsestrength = 0.918575346f;
+            bestparams.topbit = 0.0164863784f;
+            bestparams.distance1 = 1.05853784f;
+            bestparams.distance2 = 1.10829127f;
+            bestparams.stmix = 0.617778838f;
+            // current score 64 (3)
+            //bestparams.threshold = 0.898101449f;
+            //bestparams.pulsestrength = 0.797706962f;
+            //bestparams.topbit = 0.f;
+            //bestparams.distance1 = 0.989617884f;
+            //bestparams.distance2 = 1.0587045f;
+            //bestparams.stmix = 0.684196472f;
             break;
         }
         break;
@@ -742,10 +749,10 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             break;
         case 7:
             // current score 148 (14)
-            bestparams.threshold = 0.933473349f;
-            bestparams.pulsestrength = 1.51940262f;
-            bestparams.topbit = 0.0075f;
-            bestparams.distance1 = 1.15147519f;
+            bestparams.threshold = 0.933337092f;
+            bestparams.pulsestrength = 1.51991868f;
+            bestparams.topbit = 0.f;
+            bestparams.distance1 = 1.15172291f;
             bestparams.distance2 = 1.23372996f;
             bestparams.stmix = 0.693227589f;
             break;
@@ -832,11 +839,11 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
         {
         case 3:
             // current score 1380 (169)
-            bestparams.threshold = 0.9632f;
-            bestparams.topbit = 0.975f;
-            bestparams.distance1 = 1.7467f;
-            bestparams.distance2 = 2.36132f;
-            bestparams.stmix = 0.975395f;
+            bestparams.threshold = 0.96345f;
+            bestparams.topbit = 0.976f;
+            bestparams.distance1 = 1.751f;
+            bestparams.distance2 = 2.366f;
+            bestparams.stmix = 0.978f;
             break;
         case 5:
             // current score 7981 (204)
@@ -869,12 +876,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
         switch (wave)
         {
         case 3:
-            // current score 2201 (242)
-            bestparams.threshold = 0.948997259f;
-            bestparams.topbit = 0.982420206f;
-            bestparams.distance1 = 2.0006547f;
-            bestparams.distance2 = 2.03388166f;
-            bestparams.stmix = 0.992275f;
+            // current score 2200 (241)
+            bestparams.threshold = 0.948939443f;
+            bestparams.topbit = 0.982385635f;
+            bestparams.distance1 = 1.99798977f;
+            bestparams.distance2 = 2.03521848f;
+            bestparams.stmix = 0.98950702f;
             break;
         case 5:
             // current score 8646 (214)
