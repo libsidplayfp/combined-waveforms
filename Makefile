@@ -1,9 +1,11 @@
 .PHONY: all clean
 
 # Uncomment to enable parallel processing
-#FLAG_OPENMP = -fopenmp
+FLAG_OPENMP = -fopenmp
 
-all: combined
+CXXFLAGS = -march=native -O3
+
+all: clean combined
 
 clean:
 	$(RM) combined
