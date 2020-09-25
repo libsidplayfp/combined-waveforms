@@ -129,6 +129,7 @@ public:
             case Param_t::DISTANCE1: return distance1;
             case Param_t::DISTANCE2: return distance2;
             case Param_t::STMIX: return stmix;
+            default: return 0.f; // Just to silence warning
         }
     }
 
