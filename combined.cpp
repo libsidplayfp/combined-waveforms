@@ -608,12 +608,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
         switch (wave)
         {
         case 3:
-            // current score 1806 (118)
-            bestparams.threshold = 0.981850088f;
-            bestparams.topbit = 0.f;
-            bestparams.distance1 = 4.73386049f;
-            bestparams.distance2 = 5.07241964f;
-            bestparams.stmix = 0.784137607f;
+            // current score 1774 (117)
+            bestparams.threshold = 0.981906116f;
+            bestparams.topbit = 0.001f;
+            bestparams.distance1 = 4.73859024f;
+            bestparams.distance2 = 5.08043718f;
+            bestparams.stmix = 0.784951389f;
             break;
         case 5:
             // current score 3724 (107)
@@ -803,11 +803,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
         switch (wave)
         {
         case 3:
-            // current score 294 (94)
-            bestparams.threshold = 0.983248f;
+            // current score 282 (90)
+            bestparams.threshold = 0.984771669f;
             bestparams.topbit = 0.f;
-            bestparams.distance1 = 4.63783f;
-            bestparams.stmix = 0.779401f;
+            bestparams.distance1 = 4.88738728f;
+            bestparams.distance2 = 4.53328466f;
+            bestparams.stmix = 0.794408202f;
             break;
         case 5:
             // current score 6454 (259)
@@ -901,13 +902,13 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance2 = 0.294430673f;
             break;
         case 7:
-            // current score 2137 (107)
-            bestparams.threshold = 0.996801913f;
-            bestparams.pulsestrength = 1.69920897f;
-            bestparams.topbit = 0.994957328f;
-            bestparams.distance1 = 0.864283502f;
-            bestparams.distance2 = 1.47962189f;
-            bestparams.stmix = 0.732006907f;
+            // current score 2109 (103)
+            bestparams.threshold = 0.994506955f;
+            bestparams.pulsestrength = 1.68373728f;
+            bestparams.topbit = 0.994918823f;
+            bestparams.distance1 = 0.868044257f;
+            bestparams.distance2 = 1.48022985f;
+            bestparams.stmix = 0.732807696f;
             break;
         }
         break;
