@@ -16,11 +16,11 @@ When noise is selected lower 4 bits are grounded.
 The output bits pull down the LFSR register bits during shifting.
 
 * S+T  
-When saw and triangle are both selected all bits interconnected.
-On 8580 the upper 8 bit selectors have double resistance.
+When saw and triangle are both selected all bits are interconnected.
 As the XOR circuit is disabled we have a combination of saw and the same saw left shifted by one.
+On 8580 the upper 8 bit selectors have double resistance.
 
-When one of the input bits is zero the output is being pull down, basically we have an AND of the selected waveforms. Additionally, when pulse or a combination of saw and triangle are selected, the bits are interconnected so some more neighboring output lines are pulled down by grounded bits, with a strength depending on the model, temperature and the status of inputs.
+When one of the input bits of the waveform selector is zero the output is being pull down, basically we have an AND of the selected waveforms. Additionally, when pulse or a combination of saw and triangle are selected, the bits are interconnected so some more neighboring output lines are pulled down by grounded bits, with a strength depending on the model, temperature and the status of inputs.
 
 About the samplings
 ---
