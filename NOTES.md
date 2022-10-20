@@ -20,5 +20,9 @@ When saw and triangle are both selected all bits interconnected.
 On 8580 the upper 8 bit selectors have double resistance.
 As the XOR circuit is disabled we have a combination of saw and the same saw left shifted by one.
 
+When one of the input bits is zero the output is being pull down, basically we have an AND of the selected waveforms. Additionally, when pulse or a combination of saw and triangle are selected, the bits are interconnected so some more neighboring output lines are pulled down by grounded bits, with a strength depending on the model, temperature and the status of inputs.
 
-The ST and PS samplings for the 6581 are affected by the saw top bit writeback issue: once the top bit is driven low the accumulator is altered rendering the second half of the values invalid (those from 2048 to 4095). A few PS samplings, marked as odd, are in fact good.
+About the samplings
+---
+
+The ST, PS and PST samplings for the 6581 are affected by the saw top bit writeback issue: once the top bit is driven low the accumulator is altered rendering the second half of the values invalid (those from 2048 to 4095). A few PS samplings, marked as odd, are in fact good.
