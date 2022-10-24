@@ -22,6 +22,30 @@ On 8580 the upper 8 bit selectors have double resistance.
 
 When one of the input bits of the waveform selector is zero the output is being pull down, basically we have an AND of the selected waveforms. Additionally, when pulse or a combination of saw and triangle are selected, the bits are interconnected so some more neighboring output lines are pulled down by grounded bits, with a strength depending on the model, temperature and the status of inputs.
 
+
+Noise writeback
+---
+Normally, when noise is selected along with another waveform, the output bits pull down the corresponding shift register bits.
+During shift phase 1 the SR bits are floating and will be driven by the output of combined waveforms, or slowly turn high.
+When switching to phase 2 the last value of the bit is shifted into the following and from phi2 the output bits again will pull down the corresponding shift register bits.
+
+~~~
+     |       |     |                bit n     |   bit n+1
+     | bit19 | clk | LC c1 c2    latch output | latch output
+-----|-------|-----|----------  --------------|--------------
+phi1 |   0   |  1  | 0  1  1       A <-> A    |   B <-> B
+phi2 |   0   |  1  | 0  1  1       A <-> A    |   B <-> B
+-----|-------|-----|----------  --------------|--------------
+phi1 |   1   |  1  | 0  1  1       A <-> A    |   B <-> B      <- bit19 raises
+phi2 |   1   |  1  | 0  1  1       A <-> A    |   B <-> B
+-----|-------|-----|----------  --------------|--------------
+phi1 |   1   |  0  | 1  0  0       X     A  --|-> A     B      <- shift phase 1
+phi2 |   1   |  0  | 1  0  0       X     A  --|-> A     B
+-----|-------|-----|----------  --------------|--------------
+phi1 |   1   |  1  | 0  1  0       X --> X    |   A --> A      <- shift phase 2
+phi2 |   1   |  1  | 0  1  1       X <-> X    |   A <-> A
+~~~
+
 About the samplings
 ---
 
