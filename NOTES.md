@@ -25,9 +25,9 @@ When one of the input bits of the waveform selector is zero the output is being 
 
 Noise writeback
 ---
-Normally, when noise is selected along with another waveform, the output bits pull down the corresponding shift register bits.
+Normally, when noise is selected along with another waveform, c2 is on and the output bits pull down the corresponding shift register bits.
 During shift phase 1 the SR bits are floating and will be driven by the output of combined waveforms, or slowly turn high.
-When switching to phase 2 the last value of the bit is shifted into the following and from phi2 the output bits again will pull down the corresponding shift register bits.
+When switching to phase 2 the last value of the bit from phase 1 is shifted into the following; from phi2 onward the output bits again will pull down the corresponding shift register bits.
 
 ~~~
      |       |     |                bit n     |   bit n+1
