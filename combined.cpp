@@ -73,7 +73,8 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
     /*
      * The score here reported is the acoustic error.
      * In parentheses the number of mispredicted bits
-     * on a total of 32768.
+     * on a total of 32768 (28672 for combinations
+     * including saw on 6581).
      */
     switch (chip)
     {
@@ -277,11 +278,11 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance1 = 1.97506f;
             bestparams.distance2 = 1.66937f;
             bestparams.stmix = 0.63482f;
-// current score 2311 (376/32768)
-bestparams.threshold = 0.90223819f;
-bestparams.topbit = 0.0393242016f;
-bestparams.distance1 = 1.95828879f;
-bestparams.distance2 = 1.7475059f;
+// current score 1599 (286)
+bestparams.threshold = 0.867728114f;
+bestparams.topbit = 0.037581306f;
+bestparams.distance1 = 1.95484614f;
+bestparams.distance2 = 1.50211918f;
 
             break;
         case 5:
@@ -856,7 +857,7 @@ bestparams.distance2 = 1.7475059f;
             bestparams.distance1 = 1.6347f;
             bestparams.distance2 = 2.51537f;
             bestparams.stmix = 0.73115f;
-// current score 1139 (140/32768)
+// current score 1139 (140)
 bestparams.threshold = 0.930301249f;
 bestparams.topbit = 1.00456381f;
 bestparams.distance1 = 1.73719871f;
