@@ -318,7 +318,12 @@ public:
                 // Calculate score
                 const unsigned int simval = GetScore8(bitarray);
                 const unsigned int refval = reference[j];
-                const unsigned int error = ScoreResult(simval, refval);
+                unsigned int error = ScoreResult(simval, refval);
+
+                // Ignore top bits when saw is selected on 6581
+                if ((wave & 2) && !is8580)
+                    error &= 0x3f;
+
                 #pragma omp atomic
                 score.audible_error += error;
                 #pragma omp atomic
