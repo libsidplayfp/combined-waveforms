@@ -53,7 +53,7 @@ inline long getSeed()
 #endif
 
 static std::default_random_engine prng(getSeed());
-static std::normal_distribution<> normal_dist(1.0, 0.0002);
+static std::normal_distribution<> normal_dist(1.0, 0.005);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -277,6 +277,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance1 = 1.97506f;
             bestparams.distance2 = 1.66937f;
             bestparams.stmix = 0.63482f;
+// current score 2311 (376/32768)
+bestparams.threshold = 0.90223819f;
+bestparams.topbit = 0.0393242016f;
+bestparams.distance1 = 1.95828879f;
+bestparams.distance2 = 1.7475059f;
+
             break;
         case 5:
             // current score 6128 (130)
@@ -850,6 +856,12 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.distance1 = 1.6347f;
             bestparams.distance2 = 2.51537f;
             bestparams.stmix = 0.73115f;
+// current score 1139 (140/32768)
+bestparams.threshold = 0.930301249f;
+bestparams.topbit = 1.00456381f;
+bestparams.distance1 = 1.73719871f;
+bestparams.distance2 = 2.31779051f;
+
             break;
         case 5:
             // current score 7981 (204)

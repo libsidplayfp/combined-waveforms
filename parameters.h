@@ -1,7 +1,7 @@
 /*
  * This file is part of libsidplayfp, a SID player engine.
  *
- * Copyright 2013-2016 Leandro Nini <drfiemost@users.sourceforge.net>
+ * Copyright 2013-2022 Leandro Nini <drfiemost@users.sourceforge.net>
  * Copyright 2007-2010 Antti Lankila
  *
  * This program is free software; you can redistribute it and/or modify
@@ -271,55 +271,36 @@ public:
             #pragma omp flush(done)
             if (!done)
             {
-                float bitarray[12];
+                // saw/tri: if saw is not selected the bits are XORed
+                unsigned int osc =
+                    (wave & 2) ? j : ((j & 0x800) == 0 ? j : (j ^ 0xfff)) << 1;
 
-                // Saw
-                for (unsigned int i = 0; i < 12; i++)
-                {
-                    bitarray[i] = (j & (1 << i)) != 0 ? 1.f : 0.f;
-                }
-
-                // If Saw is not selected the bits are XORed
-                if ((wave & 2) == 0)
-                {
-                    const bool top = (j & 2048) != 0;
-                    for (int i = 11; i > 0; i--)
-                    {
-                        bitarray[i] = top ? 1.f - bitarray[i-1] : bitarray[i-1];
-                    }
-                    bitarray[0] = 0.f;
-                }
-
+                // saw+tri
                 // If both Saw and Triangle are selected the bits are interconnected
                 //
                 // @NOTE: on the 8580 the triangle selector transistors, with the exception 
                 // of the lowest four bits, are half the width of the other selectors.
                 // How does this affects combined waveforms?
-                else if ((wave & 3) == 3)
+
+                if ((wave & 3) == 3)
                 {
-#if 1
-                    bitarray[0] *= stmix;
-                    const float compl_stmix = 1.f - stmix;
-                    for (int i = 1; i < 12; i++)
-                    {
-                        /*
-                         * Enabling the S waveform pulls the XOR circuit selector transistor down
-                         * (which would normally make the descending ramp of the triangle waveform),
-                         * so ST does not actually have a sawtooth and triangle waveform combined,
-                         * but merely combines two sawtooths, one rising double the speed the other.
-                         *
-                         * http://www.lemon64.com/forum/viewtopic.php?t=25442&postdays=0&postorder=asc&start=165
-                         */
-                        bitarray[i] = bitarray[i] * stmix + bitarray[i-1] * compl_stmix;
-                    }
-#else
-                    const float compl_stmix = 1.f - stmix;
-                    for (int i = 11; i > 0; i--)
-                    {
-                        bitarray[i] = bitarray[i] * stmix + bitarray[i-1] * compl_stmix;
-                    }
-                    bitarray[0] *= stmix;
-#endif
+                    /*
+                    * Enabling the S waveform pulls the XOR circuit selector transistor down
+                    * (which would normally make the descending ramp of the triangle waveform),
+                    * so ST does not actually have a sawtooth and triangle waveform combined,
+                    * but merely combines two sawtooths, one rising double the speed the other.
+                    *
+                    * http://www.lemon64.com/forum/viewtopic.php?t=25442&postdays=0&postorder=asc&start=165
+                    */
+                    osc &= osc << 1;
+                }
+
+                // Get the analogic values
+                float bitarray[12];
+
+                for (unsigned int i = 0; i < 12; i++)
+                {
+                    bitarray[i] = (osc & (1 << i)) != 0 ? 1.f : 0.f;
                 }
 
                 // topbit for Saw
