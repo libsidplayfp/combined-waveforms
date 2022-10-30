@@ -53,15 +53,18 @@ struct score_t
     unsigned int audible_error;
     unsigned int wrong_bits;
 
-    score_t() :
+    unsigned int total_bits;
+
+    score_t(bool isSaw6581) :
         audible_error(0),
-        wrong_bits(0)
+        wrong_bits(0),
+        total_bits(isSaw6581 ? 2048*8+2048*6 : 4096*8)
     {}
 
     std::string wrongBitsRate() const
     {
         std::ostringstream o;
-        o << wrong_bits << "/" << 4096*8;
+        o << wrong_bits << "/" << total_bits;
         return o.str();
     }
 
@@ -255,7 +258,9 @@ public:
             wa[12+i] = distFunc(distance2, i);
         }
 
-        score_t score;
+        const bool isSaw6581 = (wave & 2) && !is8580;
+
+        score_t score(isSaw6581);
 
         bool done = false;
 
@@ -316,7 +321,7 @@ public:
                 unsigned int error = ScoreResult(simval, refval);
 
                 // Ignore top bits when saw is selected on 6581
-                if ((wave & 2) && !is8580)
+                if (isSaw6581)
                     error &= 0x3f;
 
                 #pragma omp atomic
