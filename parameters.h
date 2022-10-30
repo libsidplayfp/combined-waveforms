@@ -36,7 +36,6 @@ enum class Param_t
 {
     THRESHOLD,
     PULSESTRENGTH,
-    TOPBIT,
     DISTANCE1,
     DISTANCE2
 };
@@ -106,7 +105,7 @@ private:
     }
 
 public:
-    float threshold, pulsestrength, topbit, distance1, distance2;
+    float threshold, pulsestrength, distance1, distance2;
 
 public:
     Parameters() { reset(); }
@@ -115,7 +114,6 @@ public:
     {
         threshold = 0.f;
         pulsestrength = 0.f;
-        topbit = 0.f;
         distance1 = 0.f;
         distance2 = 0.f;
     }
@@ -126,7 +124,6 @@ public:
         {
             case Param_t::THRESHOLD: return threshold;
             case Param_t::PULSESTRENGTH: return pulsestrength;
-            case Param_t::TOPBIT: return topbit;
             case Param_t::DISTANCE1: return distance1;
             case Param_t::DISTANCE2: return distance2;
             default: return 0.f; // Just to silence warning
@@ -139,7 +136,6 @@ public:
         {
             case Param_t::THRESHOLD: threshold = v; break;
             case Param_t::PULSESTRENGTH: pulsestrength = v; break;
-            case Param_t::TOPBIT: topbit = v; break;
             case Param_t::DISTANCE1: distance1 = v; break;
             case Param_t::DISTANCE2: distance2 = v; break;
         }
@@ -151,7 +147,6 @@ public:
         ss.precision(flt::max_digits10);
         ss << "threshold = " << threshold << std::endl;
         ss << "pulsestrength = " << pulsestrength << std::endl;
-        ss << "topbit = " << topbit << std::endl;
         ss << "distance1 = " << distance1 << std::endl;
         ss << "distance2 = " << distance2 << std::endl;
         return ss.str();
@@ -178,7 +173,7 @@ private:
                 avg += pulsestrength * weight;
                 n += weight;
             }
-            tmp[sb] = (bitarray[sb] + avg / n) * 0.5f;
+            tmp[sb] = avg / n;
         }
         for (int i = 0; i < 12; i++)
             bitarray[i] = tmp[i];
@@ -301,16 +296,6 @@ public:
                 for (unsigned int i = 0; i < 12; i++)
                 {
                     bitarray[i] = (osc & (1 << i)) != 0 ? 1.f : 0.f;
-                }
-
-                // topbit for Saw
-                if ((wave & 2) == 2)
-                {
-                    // Why does this happen?
-                    // For 6581 this is mostly 0 while for 8580 it's near 1
-                    // A few 'odd' 6581 chips show a strangely high value
-                    // for Pulse-Saw combination
-                    bitarray[11] *= topbit;
                 }
 
                 SimulateMix(bitarray, wa, wave > 4);
