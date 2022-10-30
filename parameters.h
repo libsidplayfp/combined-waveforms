@@ -38,8 +38,7 @@ enum class Param_t
     PULSESTRENGTH,
     TOPBIT,
     DISTANCE1,
-    DISTANCE2,
-    STMIX
+    DISTANCE2
 };
 // define the postfix increment operator to allow looping over enum
 inline Param_t& operator++(Param_t& x, int)
@@ -104,7 +103,7 @@ private:
     }
 
 public:
-    float threshold, pulsestrength, topbit, distance1, distance2, stmix;
+    float threshold, pulsestrength, topbit, distance1, distance2;
 
 public:
     Parameters() { reset(); }
@@ -116,7 +115,6 @@ public:
         topbit = 0.f;
         distance1 = 0.f;
         distance2 = 0.f;
-        stmix = 0.f;
     }
 
     float GetValue(Param_t i)
@@ -128,7 +126,6 @@ public:
             case Param_t::TOPBIT: return topbit;
             case Param_t::DISTANCE1: return distance1;
             case Param_t::DISTANCE2: return distance2;
-            case Param_t::STMIX: return stmix;
             default: return 0.f; // Just to silence warning
         }
     }
@@ -142,7 +139,6 @@ public:
             case Param_t::TOPBIT: topbit = v; break;
             case Param_t::DISTANCE1: distance1 = v; break;
             case Param_t::DISTANCE2: distance2 = v; break;
-            case Param_t::STMIX: stmix = v; break;
         }
     }
 
@@ -155,7 +151,6 @@ public:
         ss << "topbit = " << topbit << std::endl;
         ss << "distance1 = " << distance1 << std::endl;
         ss << "distance2 = " << distance2 << std::endl;
-        ss << "stmix = " << stmix << std::endl;
         return ss.str();
     }
 
