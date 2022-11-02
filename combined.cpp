@@ -53,7 +53,7 @@ inline long getSeed()
 #endif
 
 static std::default_random_engine prng(getSeed());
-static std::normal_distribution<> normal_dist(1.0, 0.5);
+static std::normal_distribution<> normal_dist(1.0, 0.001);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -276,16 +276,10 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             bestparams.threshold = 0.90522f;
             bestparams.distance1 = 1.97506f;
             bestparams.distance2 = 1.66937f;
-
-// current score 1599 (286)
-bestparams.threshold = 0.867728114f;
-bestparams.distance1 = 1.95484614f;
-bestparams.distance2 = 1.50211918f;
-// current score 2149 (345/28672)
-bestparams.threshold = 0.89555335f;
-bestparams.distance1 = 5.68225861f;
-bestparams.distance2 = 2.04806995f;
-
+// current score 1941 (327/28672)
+bestparams.threshold = 0.862147212f;
+bestparams.distance1 = 10.8962431f;
+bestparams.distance2 = 2.50848103f;
             break;
         case 5:
             // current score 6128 (130)
@@ -293,23 +287,35 @@ bestparams.distance2 = 2.04806995f;
             bestparams.pulsestrength = 2.4843f;
             bestparams.distance1 = 1.0353f;
             bestparams.distance2 = 1.1484f;
+// current score 6372 (146/32768)
+bestparams.threshold = 0.913688719f;
+bestparams.pulsestrength = 2.91472721f;
+bestparams.distance1 = 1.00917649f;
+bestparams.distance2 = 1.14808357f;
             break;
         case 6:
             // current score 10567 (567)
             bestparams.threshold = 0.912142f;
             bestparams.pulsestrength = 2.32076f;
-
             bestparams.distance1 = 0.053906f;
             bestparams.distance2 = 0.25143f;
+// current score 5630 (1073/28672)
+bestparams.threshold = 0.498705059f;
+bestparams.pulsestrength = 0.000455357862f;
+bestparams.distance1 = 0.843253314f;
+bestparams.distance2 = 1.058056f;
             break;
         case 7:
             // current score 36 (12)
             bestparams.threshold = 0.901f;
             bestparams.pulsestrength = 1.0845f;
-
             bestparams.distance1 = 1.056f;
             bestparams.distance2 = 1.1848f;
-
+// current score 306 (35/28672)
+bestparams.threshold = 0.858491957f;
+bestparams.pulsestrength = 4.21265459f;
+bestparams.distance1 = 1.61194706f;
+bestparams.distance2 = 1.12226105f;
             break;
         }
         break;
@@ -855,19 +861,12 @@ bestparams.distance2 = 2.04806995f;
         case 3:
             // current score 1300 (184)
             bestparams.threshold = 0.94344f;
-
             bestparams.distance1 = 1.6347f;
             bestparams.distance2 = 2.51537f;
-
-// current score 1139 (140)
-bestparams.threshold = 0.930301249f;
-
-bestparams.distance1 = 1.73719871f;
-bestparams.distance2 = 2.31779051f;
-// current score 1139 (140/32768)
-bestparams.threshold = 0.870183527f;
-bestparams.distance1 = 1.78748107f;
-bestparams.distance2 = 2.40957189f;
+// current score 928 (135/32768)
+bestparams.threshold = 0.715788841f;
+bestparams.distance1 = 1.32999945f;
+bestparams.distance2 = 2.2172699f;
 
             break;
         case 5:
@@ -876,19 +875,35 @@ bestparams.distance2 = 2.40957189f;
             bestparams.pulsestrength = 1.7025f;
             bestparams.distance1 = 1.0868f;
             bestparams.distance2 =  1.43527f;
+// current score 7891 (236/32768)
+bestparams.threshold = 0.835852802f;
+bestparams.pulsestrength = 1.7671895f;
+bestparams.distance1 = 1.11400747f;
+bestparams.distance2 = 1.43516386f;
             break;
         case 6:
             // current score 9596 (324)
             bestparams.threshold = 0.95831f;
             bestparams.pulsestrength = 1.95269f;
-
             bestparams.distance1 = 0.0077384f;
             bestparams.distance2 = 0.18408f;
+// current score 12559 (389/32768)
+bestparams.threshold = 0.820425332f;
+bestparams.pulsestrength = 1.62089145f;
+bestparams.distance1 = 1.14658892f;
+bestparams.distance2 = 1.42470372f;
             break;
         case 7:
             // current score 2118 (54)
             bestparams.threshold = 0.94699f;
             bestparams.pulsestrength = 1.09668f;
+            bestparams.distance1 = 0.941672206f;
+            bestparams.distance2 = 2.01391125f;
+// current score 2066 (54/32768)
+bestparams.threshold = 0.897909403f;
+bestparams.pulsestrength = 1.72159398f;
+bestparams.distance1 = 1.00274765f;
+bestparams.distance2 = 1.46455169f;
 
             bestparams.distance1 = 0.94167f;
             bestparams.distance2 = 2.0139f;
