@@ -172,9 +172,9 @@ private:
             }
             if (HasPulse)
             {
-                const float weight = wa[sb];
-                avg += (1.f - pulsestrength) * weight;
-                n += weight;
+                //const float weight = wa[sb];
+                avg -= pulsestrength;// * weight;
+                //n += weight;
             }
             pulldown[sb] = avg / n;
         }
@@ -248,7 +248,7 @@ public:
          * cover all scenarios...
          */
         //const distance_t distFunc = (wave & 1) == 1 ? exponentialDistance : is8580 ? quadraticDistance : linearDistance;
-        const distance_t distFunc = exponentialDistance;
+        const distance_t distFunc = exponentialDistance;//quadraticDistance;
 
         float wa[12 * 2 + 1];
         wa[12] = 1.f;
