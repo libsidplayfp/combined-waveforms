@@ -27,6 +27,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <iomanip>
 #include <limits>
 
 typedef std::numeric_limits<float> flt;
@@ -317,10 +318,12 @@ public:
                 if (print)
                 {
                     #pragma omp ordered
-                    std::cout << j << " "
-                              << refval << " "
-                              << simval << " "
-                              << (simval ^ refval) << " "
+                    std::cout << std::hex << std::setfill('0')
+                              << std::setw(3) << j << " "
+                              << std::setw(3) << osc << " "
+                              << std::setw(2) << refval << " "
+                              << std::setw(2) << simval << " "
+                              << std::setw(2) << (simval ^ refval) << " "
 #if 0
                               << getAnalogValue(bitarray) << " "
 #endif

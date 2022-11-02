@@ -944,7 +944,9 @@ bestparams.distance2 = 2.40957189f;
 
     // Calculate current score
     score_t bestscore = bestparams.Score(wave, is8580, reference, true, 4096 * 255);
-    std::cout << "# initial score " << bestscore << std::endl << bestparams.toString() << std::endl << std::endl;
+    std::cout << "# initial score " << std::dec
+        << bestscore << std::endl
+        << bestparams.toString() << std::endl << std::endl;
     if (bestscore.audible_error == 0)
         exit(0);
 
@@ -1000,7 +1002,9 @@ bestparams.distance2 = 2.40957189f;
         if (bestscore.isBetter(score))
         {
             // accept if improvement
-            std::cout << "# current score " << score << std::endl << p.toString() << std::endl << std::endl;
+            std::cout << "# current score " << std::dec
+                << score << std::endl
+                << p.toString() << std::endl << std::endl;
             if (score.audible_error == 0)
                 exit(0);
             //p.reset();
