@@ -156,7 +156,7 @@ public:
 private:
     void SimulateMix(float bitarray[12], float wa[], bool HasPulse) const
     {
-        float tmp[12];
+        float pulldown[12];
 
         for (int sb = 0; sb < 12; sb++)
         {
@@ -164,20 +164,23 @@ private:
             float avg = 0.f;
             for (int cb = 0; cb < 12; cb++)
             {
+                if (cb == sb)
+                    continue;
                 const float weight = wa[sb - cb + 12];
-                avg += bitarray[cb] * weight;
+                avg += (1.f - bitarray[cb]) * weight;
                 n += weight;
             }
             if (HasPulse)
             {
                 const float weight = wa[sb];
-                avg += pulsestrength * weight;
+                avg += (1.f - pulsestrength) * weight;
                 n += weight;
             }
-            tmp[sb] = avg / n;
+            pulldown[sb] = avg / n;
         }
         for (int i = 0; i < 12; i++)
-            bitarray[i] = tmp[i];
+            if (bitarray[i] != 0.f)
+                bitarray[i] = 1.f - pulldown[i];
     }
 
     /**
@@ -244,7 +247,8 @@ public:
          * TODO: try to come up with a generic distance function to
          * cover all scenarios...
          */
-        const distance_t distFunc = (wave & 1) == 1 ? exponentialDistance : is8580 ? quadraticDistance : linearDistance;
+        //const distance_t distFunc = (wave & 1) == 1 ? exponentialDistance : is8580 ? quadraticDistance : linearDistance;
+        const distance_t distFunc = exponentialDistance;
 
         float wa[12 * 2 + 1];
         wa[12] = 1.f;
