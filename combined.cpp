@@ -33,7 +33,7 @@
 #include "parameters.h"
 
 
-static const float EPSILON = 1e-3;
+static const float EPSILON = 1e-4;
 
 #ifdef __MINGW32__
 // MinGW's std::random_device is a PRNG seeded with a constant value
@@ -980,15 +980,19 @@ bestparams.distance2 = 2.40957189f;
                     //float newValue = oldValue + GetRandomValue();
                     //std::cout << newValue << std::endl;
 
+                    // avoid negative values
+                    if (newValue <= 0.f)
+                    {
+                        newValue = EPSILON;
+                    }
                     // try to avoid too small values
-                    if (newValue < EPSILON)
+                    else if (newValue < EPSILON)
                         newValue += GetNewRandomValue();
 
                     // check for parameters limits
-                    if ((i == Param_t::THRESHOLD) && (newValue > 1.f)
-                        /*|| (i == Param_t::DISTANCE)  && (newValue < 1.f)*/)
+                    if ((i == Param_t::THRESHOLD) && (newValue >= 1.f))
                     {
-                        newValue = 1.f;
+                        newValue = 1.f - EPSILON;
                     }
 
                     p.SetValue(i, newValue);
