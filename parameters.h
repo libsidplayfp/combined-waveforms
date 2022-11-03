@@ -30,6 +30,8 @@
 #include <iomanip>
 #include <limits>
 
+//#define QUADRATIC
+
 typedef std::numeric_limits<float> flt;
 
 // Model parameters
@@ -172,9 +174,13 @@ private:
             }
             if (HasPulse)
             {
-                //const float weight = wa[sb];
-                avg -= pulsestrength;// * weight;
-                //n += weight;
+#if 1
+                avg -= pulsestrength;
+#else
+                const float weight = wa[sb];
+                avg += (1.f - pulsestrength) * weight;
+                n += weight;
+#endif
             }
             pulldown[sb] = avg / n;
         }
@@ -248,7 +254,11 @@ public:
          * cover all scenarios...
          */
         //const distance_t distFunc = (wave & 1) == 1 ? exponentialDistance : is8580 ? quadraticDistance : linearDistance;
-        const distance_t distFunc = exponentialDistance;//quadraticDistance;
+#ifdef QUADRATIC
+        const distance_t distFunc = is8580 ? quadraticDistance : exponentialDistance;//quadraticDistance;
+#else
+        const distance_t distFunc = exponentialDistance;
+#endif
 
         float wa[12 * 2 + 1];
         wa[12] = 1.f;
