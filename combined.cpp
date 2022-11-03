@@ -53,7 +53,7 @@ inline long getSeed()
 #endif
 
 static std::default_random_engine prng(getSeed());
-static std::normal_distribution<> normal_dist(1.0, 0.05);
+static std::normal_distribution<> normal_dist(1.0, 0.005);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -897,12 +897,12 @@ bestparams.distance2 = 1.05711341f;
 bestparams.threshold = 0.715788841f;
 bestparams.distance1 = 1.32999945f;
 bestparams.distance2 = 2.2172699f;
-/*
-// current score 2634 (295/32768) - quadr
-bestparams.threshold = 0.744379222f;
-bestparams.distance1 = 0.976469934f;
-bestparams.distance2 = 1.84688985f;
-*/
+#ifdef QUADRATIC
+// current score 1257 (164/32768)
+bestparams.threshold = 0.691515148f;
+bestparams.distance1 = 0.115770422f;
+bestparams.distance2 = 0.819613338f;
+#endif
             break;
         case 5:
             // current score 7981 (204)
@@ -915,18 +915,18 @@ bestparams.threshold = 0.835852802f;
 bestparams.pulsestrength = 1.7671895f;
 bestparams.distance1 = 1.11400747f;
 bestparams.distance2 = 1.43516386f;
-// current score 8051 (222/32768)
-bestparams.threshold = 0.933559895f;
-bestparams.pulsestrength = 1.05558527f;
-bestparams.distance1 = 1.09288204f;
-bestparams.distance2 = 1.43515122f;
-/*
+// current score 7991 (212/32768)
+bestparams.threshold = 0.93500334f;
+bestparams.pulsestrength = 1.05977178f;
+bestparams.distance1 = 1.08629429f;
+bestparams.distance2 = 1.43518543f;
+#ifdef QUADRATIC
 // current score 9113 (198/32768) - quadr dist
 bestparams.threshold = 0.955464482f;
 bestparams.pulsestrength = 1.33896255f;
 bestparams.distance1 = 0.000220529852f;
 bestparams.distance2 = 0.183474064f;
-*/
+#endif
             break;
         case 6:
             // current score 9596 (324)
@@ -939,18 +939,18 @@ bestparams.threshold = 0.820425332f;
 bestparams.pulsestrength = 1.62089145f;
 bestparams.distance1 = 1.14658892f;
 bestparams.distance2 = 1.42470372f;
-// current score 12588 (391/32768) - exp dist
-bestparams.threshold = 0.92277956f;
-bestparams.pulsestrength = 0.948326111f;
-bestparams.distance1 = 1.13302028f;
-bestparams.distance2 = 1.4189204f;
-/*
-//current score 10379 (362/32768) - quadr
+// current score 12566 (394/32768)
+bestparams.threshold = 0.920648575f;
+bestparams.pulsestrength = 0.943601072f;
+bestparams.distance1 = 1.13034654f;
+bestparams.distance2 = 1.41881108f;
+#ifdef QUADRATIC
+//current score 10379 (362/32768)
 bestparams.threshold = 0.921799242f;
 bestparams.pulsestrength = 1.10167611f;
 bestparams.distance1 = 0.000543073867f;
 bestparams.distance2 = 0.18010284f;
-*/
+#endif
             break;
         case 7:
             // current score 2118 (54)
@@ -963,19 +963,18 @@ bestparams.threshold = 0.897909403f;
 bestparams.pulsestrength = 1.72159398f;
 bestparams.distance1 = 1.00274765f;
 bestparams.distance2 = 1.46455169f;
-// current score 2108 (59/32768)
-bestparams.threshold = 0.912114978f;
-bestparams.pulsestrength = 0.999231339f;
-bestparams.distance1 = 0.942247152f;
-bestparams.distance2 = 1.40240073f;
-
-/*
-// current score 2877 (140/32768) - quadr
-bestparams.threshold = 0.96614325f;
-bestparams.pulsestrength = 0.46566093f;
-bestparams.distance1 = 0.270850688f;
-bestparams.distance2 = 0.7190907f;
-*/
+// current score 2092 (60/32768)
+bestparams.threshold = 0.90921098f;
+bestparams.pulsestrength = 0.979807794f;
+bestparams.distance1 = 0.942194462f;
+bestparams.distance2 = 1.40958893f;
+#ifdef QUADRATIC
+// current score 2663 (72/32768)
+bestparams.threshold = 0.978958666f;
+bestparams.pulsestrength = 0.358672857f;
+bestparams.distance1 = 0.101479679f;
+bestparams.distance2 = 1.01369643f;
+#endif
             break;
         }
         break;
