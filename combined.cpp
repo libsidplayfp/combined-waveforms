@@ -287,11 +287,11 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             break;
         case 6:
             // current score 10567 (567)
-            bestparams.threshold = 0.912142456f;
-            bestparams.pulsestrength = 2.32076478f;
-            bestparams.topbit = 1.10601449f; // ???
-            bestparams.distance1 = 0.0539057441f;
-            bestparams.distance2 = 0.251437664f;
+            bestparams.threshold = 0.912142f;
+            bestparams.pulsestrength = 2.32076f;
+            bestparams.topbit = 1.106015f; // ???
+            bestparams.distance1 = 0.053906f;
+            bestparams.distance2 = 0.25143f;
             break;
         case 7:
             // current score 36 (12)
@@ -860,20 +860,20 @@ static void Optimize(const ref_vector_t &reference, int wave, char chip)
             break;
         case 6:
             // current score 9596 (324)
-            bestparams.threshold = 0.958310068f;
-            bestparams.pulsestrength = 1.95269263f;
-            bestparams.topbit = 0.992986143f;
-            bestparams.distance1 = 0.00773835462f;
-            bestparams.distance2 = 0.184085369f;
+            bestparams.threshold = 0.95831f;
+            bestparams.pulsestrength = 1.95269f;
+            bestparams.topbit = 0.992986f;
+            bestparams.distance1 = 0.0077384f;
+            bestparams.distance2 = 0.18408f;
             break;
         case 7:
             // current score 2118 (54)
-            bestparams.threshold = 0.946992695f;
-            bestparams.pulsestrength = 1.09667945f;
-            bestparams.topbit = 0.995859802f;
-            bestparams.distance1 = 0.941672206f;
-            bestparams.distance2 = 2.01391125f;
-            bestparams.stmix = 0.563315094f;
+            bestparams.threshold = 0.94699f;
+            bestparams.pulsestrength = 1.09668f;
+            bestparams.topbit = 0.99586f;
+            bestparams.distance1 = 0.94167f;
+            bestparams.distance2 = 2.0139f;
+            bestparams.stmix = 0.5633f;
             break;
         }
         break;
