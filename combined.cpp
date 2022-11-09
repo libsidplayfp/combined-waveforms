@@ -53,7 +53,7 @@ inline long getSeed()
 #endif
 
 static std::default_random_engine prng(getSeed());
-static std::normal_distribution<> normal_dist(1.0, 0.005);
+static std::normal_distribution<> normal_dist(1.0, 0.05);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -146,10 +146,10 @@ bestparams.distance2 = 1.0465101f;
             bestparams.threshold = 0.879240036f;
             bestparams.distance1 = 1.90632415f;
             bestparams.distance2 = 1.95846224f;
-// current score 2420 (291/28672)
-bestparams.threshold = 0.62948525f;
-bestparams.distance1 = 2.80316329f;
-bestparams.distance2 = 1.85850942f;
+// current score 2280 (288/28672)
+bestparams.threshold = 0.71365726f;
+bestparams.distance1 = 5.21978188f;
+bestparams.distance2 = 2.55532956f;
             break;
         case 5:
             // current score 10966 (365)
@@ -263,10 +263,10 @@ bestparams.distance2 = 1.14957368f;
             // current score 297 (98)
             bestparams.threshold = 0.989183f;
             bestparams.distance1 = 5.75852f;
-// current score 1407 (209/28672)
-bestparams.threshold = 0.973060668f;
-bestparams.distance1 = 14.7445974f;
-bestparams.distance2 = 3.1746552f;
+// current score 1391 (235/28672)
+bestparams.threshold = 0.953145444f;
+bestparams.distance1 = 15.0084419f;
+bestparams.distance2 = 2.66968346f;
             break;
         case 5:
             // current score 3348 (146)
