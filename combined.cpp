@@ -188,11 +188,11 @@ bestparams.distance2 = 0.0415615179f;
             bestparams.pulsestrength = 1.64734352f;
             bestparams.distance1 = 1.21909821f;
             bestparams.distance2 = 1.22679806f;
-// current score 1145 (126/28672)
-bestparams.threshold = 0.817024171f;
-bestparams.pulsestrength = 0.886937201f;
-bestparams.distance1 = 1.36271429f;
-bestparams.distance2 = 1.20511961f;
+// current score 1088 (166/28672)
+bestparams.threshold = 0.824253142f;
+bestparams.pulsestrength = 0.863560319f;
+bestparams.distance1 = 1.49998295f;
+bestparams.distance2 = 1.22292244f;
             break;
         }
         break;
@@ -247,11 +247,11 @@ bestparams.distance2 = 0.0123987598f;
             bestparams.pulsestrength = 1.2814858f;
             bestparams.distance1 = 1.17647922f;
             bestparams.distance2 = 1.18998444f;
-// current score 727 (69/28672)
-bestparams.threshold = 0.971840441f;
-bestparams.pulsestrength = 1.66926467f;
-bestparams.distance1 = 1.26410604f;
-bestparams.distance2 = 1.14957368f;
+// current score 723 (69/28672)
+bestparams.threshold = 0.999899983f;
+bestparams.pulsestrength = 1.70869279f;
+bestparams.distance1 = 1.29492676f;
+bestparams.distance2 = 1.16611755f;
             break;
         }
         break;
@@ -421,11 +421,11 @@ bestparams.threshold = 0.498705059f;
 bestparams.pulsestrength = 0.000455357862f;
 bestparams.distance1 = 0.843253314f;
 bestparams.distance2 = 1.058056f;
-// current score 3795 (575/28672)
-bestparams.threshold = 0.785892785f;
-bestparams.pulsestrength = 1.68656933f;
-bestparams.distance1 = 0.913057923f;
-bestparams.distance2 = 1.09173143f;
+// current score 3743 (572/28672)
+bestparams.threshold = 0.821078122f;
+bestparams.pulsestrength = 2.0782795f;
+bestparams.distance1 = 0.894204617f;
+bestparams.distance2 = 1.08205199f;
 #ifdef QUADRATIC
 // current score 6022 (585/28672)
 bestparams.threshold = 0.847607434f;
