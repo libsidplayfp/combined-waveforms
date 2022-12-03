@@ -421,11 +421,11 @@ bestparams.threshold = 0.498705059f;
 bestparams.pulsestrength = 0.000455357862f;
 bestparams.distance1 = 0.843253314f;
 bestparams.distance2 = 1.058056f;
-// current score 3743 (572/28672)
-bestparams.threshold = 0.821078122f;
-bestparams.pulsestrength = 2.0782795f;
-bestparams.distance1 = 0.894204617f;
-bestparams.distance2 = 1.08205199f;
+// current score 3693 (521/28672)
+bestparams.threshold = 0.860927045f;
+bestparams.pulsestrength = 2.43506575f;
+bestparams.distance1 = 0.908603609f;
+bestparams.distance2 = 1.07907593f;
 #ifdef QUADRATIC
 // current score 6022 (585/28672)
 bestparams.threshold = 0.847607434f;
@@ -492,11 +492,11 @@ bestparams.distance2 = 1.13628459f;
             bestparams.pulsestrength = 2.23991108f;
             bestparams.distance1 = 0.149554357f;
             bestparams.distance2 = 0.150783867f;
-// current score 1065 (90/28672)
-bestparams.threshold = 0.944435716f;
-bestparams.pulsestrength = 0.916325271f;
-bestparams.distance1 = 1.19844306f;
-bestparams.distance2 = 1.07422757f;
+// current score 1063 (89/28672)
+bestparams.threshold = 0.936044216f;
+bestparams.pulsestrength = 0.838183165f;
+bestparams.distance1 = 1.20354855f;
+bestparams.distance2 = 1.07675874f;
 #ifdef QUADRATIC
 // current score 1489 (170/28672)
 bestparams.threshold = 0.963495851f;
@@ -628,10 +628,10 @@ bestparams.distance2 = 0.000103888917f;
             bestparams.distance1 = 1.07153f;
             bestparams.distance2 = 1.09353f;
 // current score 60 (4/28672)
-bestparams.threshold = 0.999899983f;
-bestparams.pulsestrength = 1.26598084f;
-bestparams.distance1 = 1.11757302f;
-bestparams.distance2 = 1.09073651f;
+bestparams.threshold = 0.968275785f;
+bestparams.pulsestrength = 0.920366883f;
+bestparams.distance1 = 1.15777135f;
+bestparams.distance2 = 1.11236846f;
             break;
         }
         break;
