@@ -46,7 +46,48 @@ phi1 |   1   |  1  | 0  1  0       X --> X    |   A --> A      <- shift phase 2
 phi2 |   1   |  1  | 0  1  1       X <-> X    |   A <-> A
 ~~~
 
+_normal cycles_
+~~~
+         ^                     ^
+         |                     |
+         +-------------+       +-------------+
+         |             |       |             |
+         +---o<|---+   |       +---o<|---+   |
+         |         |   |       |         |   |
+         |         |   |       |         |   |
+         |         |   |       |         |   |
+ >---/---+---|>o---+   +---/---+---|>o---+   +---/--->
+~~~
+
+_shift phase 1_
+~~~
+         ^                     ^
+         |                     |
+         +-------------+       +-------------+
+         |             |       |             |
+         +---o<|---+   |       +---o<|---+   |
+         |         |   |       |         |   |
+         /         /   |       /         /   |
+         |         |   |       |         |   |
+ >-------+---|>o---+   +-------+---|>o---+   +------->
+~~~
+
+_shift phase 2 (phi1)_
+~~~
+         ^                     ^
+         |                     |
+         +-------------+       +-------------+
+         |             |       |             |
+         +---o<|---+   |       +---o<|---+   |
+         |         |   |       |         |   |
+         /         |   |       /         |   |
+         |         |   |       |         |   |
+ >---/---+---|>o---+   +---/---+---|>o---+   +---/--->
+~~~
+
+
 About the samplings
 ---
 
 The ST, PS and PST samplings for the 6581 are affected by the saw top bit writeback issue: once the top bit is driven low the accumulator is altered rendering the second half of the values invalid (those from 2048 to 4095). A few PS samplings, marked as odd, are in fact good.
+New correct samplings are now available at https://sourceforge.net/p/vice-emu/bugs/1887/
