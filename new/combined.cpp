@@ -54,7 +54,7 @@ inline long getSeed()
 #endif
 
 static std::default_random_engine prng(getSeed());
-static std::normal_distribution<> normal_dist(1.0, 0.9);
+static std::normal_distribution<> normal_dist(1.0, 0.1);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -252,10 +252,10 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 9744 (572/32768)
-            bestparams.threshold = 0.923281491f;
-            bestparams.distance1 = 2.92031336f;
-            bestparams.distance2 = 36.7901421f;
+            // current score 9710 (558/32768)
+            bestparams.threshold = 0.779444575f;
+            bestparams.distance1 = 1.38047099f;
+            bestparams.distance2 = 5.92329025f;
             break;
         case 5: // PT
             // current score 5067 (154/32768)
@@ -442,13 +442,18 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 1.06505466f;
             break;
         case 7: // PST
-            // current score 6134 (120/32768)
-            bestparams.threshold = 1.00529468f;
-            bestparams.pulsestrength = 2.4006846f;
-            bestparams.distance1 = 0.593537509f;
-            bestparams.distance2 = 1.17495871f;
+            // current score 6006 (155/32768)
+            bestparams.threshold = 1.04216397f;
+            bestparams.pulsestrength = 2.66450763f;
+            bestparams.distance1 = 0.527853131f;
+            bestparams.distance2 = 1.17376161f;
             break;
         }
+    }
+
+    else {
+        std::cout << "Unrecognized chip" << std::endl;
+        exit(-1);
     }
 #endif
     if (bestparams.distance2 == 0.f)
