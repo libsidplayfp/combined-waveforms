@@ -313,7 +313,7 @@ public:
                     bitarray[i] = (osc & (1 << i)) != 0 ? 1.f : 0.f;
                 }
 
-                SimulateMix(bitarray, wa, wave > 4);
+                SimulateMix(bitarray, wa, wave & 4);
 
                 // Calculate score
                 const unsigned int simval = GetScore8(bitarray);
