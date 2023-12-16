@@ -37,6 +37,7 @@ enum class Param_t
 {
     THRESHOLD,
     PULSESTRENGTH,
+    TOPBIT,
     DISTANCE1,
     DISTANCE2
 };
@@ -106,7 +107,7 @@ private:
     }
 
 public:
-    float threshold, pulsestrength, distance1, distance2;
+    float threshold, pulsestrength, topbit, distance1, distance2;
 
 public:
     Parameters() { reset(); }
@@ -115,6 +116,7 @@ public:
     {
         threshold = 0.9f;
         pulsestrength = 1.f;
+        topbit = 1.f;
         distance1 = 1.f;
         distance2 = 1.f;
     }
@@ -125,6 +127,7 @@ public:
         {
             case Param_t::THRESHOLD: return threshold;
             case Param_t::PULSESTRENGTH: return pulsestrength;
+            case Param_t::TOPBIT: return topbit;
             case Param_t::DISTANCE1: return distance1;
             case Param_t::DISTANCE2: return distance2;
             default: return 0.f; // Just to silence warning
@@ -137,6 +140,7 @@ public:
         {
             case Param_t::THRESHOLD: threshold = v; break;
             case Param_t::PULSESTRENGTH: pulsestrength = v; break;
+            case Param_t::TOPBIT: topbit = v; break;
             case Param_t::DISTANCE1: distance1 = v; break;
             case Param_t::DISTANCE2: distance2 = v; break;
         }
@@ -148,6 +152,7 @@ public:
         ss.precision(flt::max_digits10);
         ss << "bestparams.threshold = " << threshold << "f;" << std::endl;
         ss << "bestparams.pulsestrength = " << pulsestrength << "f;" << std::endl;
+        ss << "bestparams.topbit = " << topbit << "f;" << std::endl;
         ss << "bestparams.distance1 = " << distance1 << "f;" << std::endl;
         ss << "bestparams.distance2 = " << distance2 << "f;" << std::endl;
         return ss.str();
@@ -268,16 +273,11 @@ public:
     {
         /*
          * Calculate the weight as a function of distance.
-         * The quadratic model (1.f + (i*i) * distance) gives better results for 
-         * waveforms 6 for 8580 model.
-         * The linear model (1.f + i * distance) is quite good for waveform 6 for 6581.
-         * Waveform 5 shows mixed results for both 6581 and 8580.
-         * Furthermore the cross-bits effect seems to be asymmetric.
+         *
          * TODO: try to come up with a generic distance function to
          * cover all scenarios...
          */
-        //const distance_t distFunc = (wave & 1) == 1 ? exponentialDistance : is8580 ? quadraticDistance : linearDistance;
-        const distance_t distFunc = exponentialDistance;
+        const distance_t distFunc = (wave & 4) == 4 ? linearDistance : exponentialDistance;
 
         float wa[12 * 2 + 1];
         wa[12] = 1.f;
@@ -328,6 +328,16 @@ public:
                 for (unsigned int i = 0; i < 12; i++)
                 {
                     bitarray[i] = (osc & (1 << i)) != 0 ? 1.f : 0.f;
+                }
+
+                // topbit for Saw
+                if ((wave & 2) == 2)
+                {
+                    // Why does this happen?
+                    // For 6581 this is mostly 0 while for 8580 it's near 1
+                    // A few 'odd' 6581 chips show a strangely high value
+                    // for Pulse-Saw combination
+                    bitarray[11] *= topbit;
                 }
 
                 SimulateMix(bitarray, wa, wave & 4);
