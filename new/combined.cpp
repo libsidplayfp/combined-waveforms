@@ -517,12 +517,12 @@ bestparams.distance2 = 0.356464893f;
             bestparams.distance2 = 0.207975447f;
             break;
         case 6: // PS
-            // current score 20506 (992/32768)
-            bestparams.threshold = 1.14366603f;
-            bestparams.pulsestrength = 3.51694512f;
-            bestparams.topbit = 0.748670101f;
-            bestparams.distance1 = 0.00321029359f;
-            bestparams.distance2 = 0.218475118f;
+            // current score 20496 (988/32768)
+            bestparams.threshold = 1.14159644f;
+            bestparams.pulsestrength = 3.50420499f;
+            bestparams.topbit = 0.748402119f;
+            bestparams.distance1 = 0.00319250347f;
+            bestparams.distance2 = 0.218578994f;
             break;
         case 7: // PST
             // current score 5006 (102/32768)
@@ -531,6 +531,43 @@ bestparams.distance2 = 0.356464893f;
             bestparams.topbit = 0.904740691f;
             bestparams.distance1 = 0.0277621783f;
             bestparams.distance2 = 0.585185289f;
+            break;
+        }
+    }
+
+    else if (strcmp(chip, "broken0384") == 0)
+    {
+        switch (wave)
+        {
+        case 3: // ST
+            // current score 20337 (1579/32768)
+            bestparams.threshold = 0.000637792516f;
+            bestparams.topbit = 1.56725872f;
+            bestparams.distance1 = 0.00036806846f;
+            bestparams.distance2 = 1.51800942f;
+            break;
+        case 5: // PT
+            // current score 5204 (244/32768)
+            bestparams.threshold = 0.926222563f;
+            bestparams.pulsestrength = 1.97369242f;
+            bestparams.distance1 = 0.0908993334f;
+            bestparams.distance2 = 0.23501052f;
+            break;
+        case 6: // PS
+            // current score 31015 (2181/32768)
+            bestparams.threshold = 1.2328074f;
+            bestparams.pulsestrength = 3.9719491f;
+            bestparams.topbit = 0.73079139f;
+            bestparams.distance1 = 0.00156516861f;
+            bestparams.distance2 = 0.314677745f;
+            break;
+        case 7: // PST
+            // current score 9874 (201/32768)
+            bestparams.threshold = 1.08558261f;
+            bestparams.pulsestrength = 1.52781796f;
+            bestparams.topbit = 0.857638359f;
+            bestparams.distance1 = 0.152927235f;
+            bestparams.distance2 = 1.02657032f;
             break;
         }
     }
