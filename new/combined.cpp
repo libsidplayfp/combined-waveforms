@@ -54,6 +54,7 @@ inline long getSeed()
 #endif
 
 static std::default_random_engine prng(getSeed());
+
 static std::normal_distribution<> normal_dist(1.0, 0.001);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
