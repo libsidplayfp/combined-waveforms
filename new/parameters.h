@@ -277,7 +277,12 @@ public:
          * TODO: try to come up with a generic distance function to
          * cover all scenarios...
          */
-        const distance_t distFunc = (wave & 4) == 4 ? linearDistance : exponentialDistance;
+        //const distance_t distFunc = (wave & 4) == 4 ? linearDistance : exponentialDistance;
+        distance_t distFunc;
+        if (is8580)
+            distFunc = (wave & 1) == 1 ? exponentialDistance : quadraticDistance;
+        else
+            distFunc = (wave & 4) == 4 ? linearDistance : exponentialDistance;
 
         float wa[12 * 2 + 1];
         wa[12] = 1.f;

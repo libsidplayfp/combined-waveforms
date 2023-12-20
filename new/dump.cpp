@@ -50,6 +50,9 @@ const char* chips[] =
     "brokenr4ar3488",
     "r4ar378914",
     "brokenr4ar378914",
+    // 8580
+    "8580R5_5092_25",
+    "8580R5_5092_25_2"
 };
 
 std::string rows[4096];

@@ -55,7 +55,7 @@ inline long getSeed()
 
 static std::default_random_engine prng(getSeed());
 
-static std::normal_distribution<> normal_dist(1.0, 0.005);
+static std::normal_distribution<> normal_dist(1.0, 0.001);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -71,6 +71,8 @@ static float GetNewRandomValue()
 static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
 {
     Parameters bestparams;
+
+    bool is8580 = false;
 
     /*
      * The score here reported is the acoustic error.
@@ -572,6 +574,85 @@ bestparams.distance2 = 0.356464893f;
         }
     }
 
+    else if (strcmp(chip, "8580R5_5092_25") == 0)
+    {
+        is8580 = true;
+
+        switch (wave)
+        {
+        case 3: // ST
+            // current score 1212 (183/32768)
+            bestparams.threshold = 0.684999049f;
+            bestparams.topbit = 0.916620493f;
+            bestparams.distance1 = 1.14715648f;
+            bestparams.distance2 = 2.02339816f;
+            break;
+        case 5: // PT
+            // current score 6153 (295/32768)
+            bestparams.threshold = 0.940367579f;
+            bestparams.pulsestrength = 1.26695442f;
+            bestparams.distance1 = 0.976729453f;
+            bestparams.distance2 = 1.57954705f;
+            break;
+        case 6: // PS
+            // current score 7648 (452/32768)
+            bestparams.threshold = 0.963017106f;
+            bestparams.pulsestrength = 1.21866071f;
+            bestparams.topbit = 1.00835931f;
+            bestparams.distance1 = 0.0109215109f;
+            bestparams.distance2 = 0.381884098f;
+            break;
+        case 7: // PST
+            // current score 4323 (135/32768)
+// current score 4424 (156/32768)
+bestparams.threshold = 1.10988474f;
+bestparams.pulsestrength = 0.245698452f;
+bestparams.topbit = 0.955141246f;
+bestparams.distance1 = 1.8039037f;
+bestparams.distance2 = 5.37738657f;
+            break;
+        }
+    }
+
+    else if (strcmp(chip, "8580R5_5092_25_2") == 0)
+    {
+        is8580 = true;
+
+        switch (wave)
+        {
+        case 3: // ST
+            // current score 1052 (121/32768)
+            bestparams.threshold = 0.818429947f;
+            bestparams.topbit = 1.39634514f;
+            bestparams.distance1 = 1.94073832f;
+            bestparams.distance2 = 2.35836387f;
+            break;
+        case 5: // PT
+            // current score 3670 (140/32768)
+            bestparams.threshold = 0.990784764f;
+            bestparams.pulsestrength = 1.18064904f;
+            bestparams.distance1 = 1.04774177f;
+            bestparams.distance2 = 1.72867715f;
+            break;
+        case 6: // PS
+            // current score 9380 (399/32768)
+            bestparams.threshold = 0.979305446f;
+            bestparams.pulsestrength = 1.16381335f;
+            bestparams.topbit = 0.986514628f;
+            bestparams.distance1 = 0.0193593223f;
+            bestparams.distance2 = 0.475249112f;
+            break;
+        case 7: // PST
+            // current score 3327 (66/32768)
+            bestparams.threshold = 0.916327477f;
+            bestparams.pulsestrength = 0.453697652f;
+            bestparams.topbit = 1.25658226f;
+            bestparams.distance1 = 1.18442166f;
+            bestparams.distance2 = 1.96703053f;
+            break;
+        }
+    }
+
     else if (strcmp(chip, "broken0384") == 0)
     {
         switch (wave)
@@ -616,8 +697,6 @@ bestparams.distance2 = 0.356464893f;
 #endif
     if (bestparams.distance2 == 0.f)
         bestparams.distance2 = bestparams.distance1;
-
-    const bool is8580 = false;
 
     // Calculate current score
     score_t bestscore = bestparams.Score(wave, is8580, reference, true, 4096 * 255);
