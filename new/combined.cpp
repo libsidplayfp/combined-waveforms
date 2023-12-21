@@ -91,11 +91,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 9.51839447f;
             break;
         case 5: // PT
-            // current score 614 (104/32768)
-            bestparams.threshold = 1.0124892f;
-            bestparams.pulsestrength = 2.45542145f;
-            bestparams.distance1 = 0.055455029f;
-            bestparams.distance2 = 0.0990793332f;
+            // current score 612 (102/32768)
+            bestparams.threshold = 1.01262534f;
+            bestparams.pulsestrength = 2.46070528f;
+            bestparams.distance1 = 0.0537485816f;
+            bestparams.distance2 = 0.0986242667f;
             break;
         case 6: // PS
             // current score 8135 (575/32768)
@@ -106,11 +106,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 0.126134038f;
             break;
         case 7: // PST
-            // current score 2537 (64/32768)
-            bestparams.threshold = 1.32549036f;
-            bestparams.pulsestrength = 3.35835981f;
-            bestparams.distance1 = 0.108314693f;
-            bestparams.distance2 = 0.309225291f;
+            // current score 2505 (63/32768)
+            bestparams.threshold = 1.29061747f;
+            bestparams.pulsestrength = 3.15377498f;
+            bestparams.topbit = 0.9754318f;
+            bestparams.distance1 = 0.0968349651f;
+            bestparams.distance2 = 0.318573922f;
             break;
         }
     }
@@ -139,12 +140,12 @@ bestparams.distance1 = 0.148781762f;
 bestparams.distance2 = 0.203292117f;
             break;
         case 6: // PS
-            // current score 12974 (691/32768)
-            bestparams.threshold = 2.06900835f;
-            bestparams.pulsestrength = 8.69191265f;
-            bestparams.topbit = 1.05807245f;
-            bestparams.distance1 = 0.338294297f;
-            bestparams.distance2 = 0.196878001f;
+            // current score 12943 (688/32768)
+            bestparams.threshold = 2.0751617f;
+            bestparams.pulsestrength = 8.73614883f;
+            bestparams.topbit = 1.06498146f;
+            bestparams.distance1 = 0.336861789f;
+            bestparams.distance2 = 0.196474448f;
             break;
         case 7: // PST
             // current score 4088 (106/32768) *
@@ -296,11 +297,12 @@ bestparams.distance2 = 0.273567319f;
             bestparams.distance2 = 0.203794882f;
             break;
         case 6: // PS
-            // current score 22212 (880/32768)
-            bestparams.threshold = 1.96295238f;
-            bestparams.pulsestrength = 6.79839182f;
-            bestparams.distance1 = 0.42308706f;
-            bestparams.distance2 = 0.307685643f;
+            // current score 22211 (882/32768)
+            bestparams.threshold = 1.96928883f;
+            bestparams.pulsestrength = 6.83495998f;
+            bestparams.topbit = 1.00573444f;
+            bestparams.distance1 = 0.423750132f;
+            bestparams.distance2 = 0.306985974f;
             break;
         case 7: // PST
             // current score 5404 (100/32768)
@@ -325,11 +327,11 @@ bestparams.distance2 = 0.273567319f;
             bestparams.distance2 = 2.12972975f;
             break;
         case 5: // PT
-            // current score 3620 (65/32768)
-            bestparams.threshold = 0.99788028f;
-            bestparams.pulsestrength = 2.50648594f;
-            bestparams.distance1 = 0.043751359f;
-            bestparams.distance2 = 0.164767623f;
+            // current score 3604 (63/32768)
+            bestparams.threshold = 0.998088539f;
+            bestparams.pulsestrength = 2.51015329f;
+            bestparams.distance1 = 0.0422255732f;
+            bestparams.distance2 = 0.164421782f;
             break;
         case 6: // PS
             // current score 19624 (1177/32768)
@@ -339,12 +341,12 @@ bestparams.distance2 = 0.273567319f;
             bestparams.distance2 = 0.22332482f;
             break;
         case 7: // PST
-            // current score 7346 (155/32768)
-            bestparams.threshold = 1.21678829f;
-            bestparams.pulsestrength = 2.18165922f;
-            bestparams.topbit = 0.989545345f;
-            bestparams.distance1 = 0.142729312f;
-            bestparams.distance2 = 0.684979916f;
+            // current score 7250 (153/32768)
+            bestparams.threshold = 1.20486581f;
+            bestparams.pulsestrength = 2.13962531f;
+            bestparams.topbit = 0.961478889f;
+            bestparams.distance1 = 0.138547704f;
+            bestparams.distance2 = 0.68967092f;
             break;
         }
     }
@@ -402,11 +404,11 @@ bestparams.distance2 = 0.356464893f;
             bestparams.distance2 = 9.08618164f;
             break;
         case 5: // PT
-            // current score 4734 (124/32768)
-            bestparams.threshold = 0.943426073f;
-            bestparams.pulsestrength = 1.8501184f;
-            bestparams.distance1 = 0.0302912984f;
-            bestparams.distance2 = 0.221833065f;
+            // current score 4730 (122/32768)
+            bestparams.threshold = 0.943327487f;
+            bestparams.pulsestrength = 1.84891653f;
+            bestparams.distance1 = 0.0312459562f;
+            bestparams.distance2 = 0.222010851f;
             break;
         case 6: // PS
             // current score 19352 (763/32768)
@@ -512,11 +514,11 @@ bestparams.distance2 = 0.356464893f;
             bestparams.distance2 = 4.92881823f;
             break;
         case 5: // PT
-            // current score 3832 (76/32768)
-            bestparams.threshold = 0.946048796f;
-            bestparams.pulsestrength = 1.83248079f;
-            bestparams.distance1 = 0.0637977049f;
-            bestparams.distance2 = 0.207975447f;
+            // current score 3782 (74/32768)
+            bestparams.threshold = 0.95183748f;
+            bestparams.pulsestrength = 1.8947531f;
+            bestparams.distance1 = 0.0576633103f;
+            bestparams.distance2 = 0.201972693f;
             break;
         case 6: // PS
             // current score 20496 (988/32768)
@@ -595,12 +597,12 @@ bestparams.distance2 = 0.356464893f;
             bestparams.distance2 = 1.57954705f;
             break;
         case 6: // PS
-            // current score 7648 (452/32768)
-            bestparams.threshold = 0.963017106f;
-            bestparams.pulsestrength = 1.21866071f;
-            bestparams.topbit = 1.00835931f;
-            bestparams.distance1 = 0.0109215109f;
-            bestparams.distance2 = 0.381884098f;
+            // current score 7647 (451/32768)
+            bestparams.threshold = 0.963322341f;
+            bestparams.pulsestrength = 1.21817374f;
+            bestparams.topbit = 1.00861824f;
+            bestparams.distance1 = 0.0110742627f;
+            bestparams.distance2 = 0.382735342f;
             break;
         case 7: // PST
             // current score 4323 (135/32768)
@@ -621,11 +623,11 @@ bestparams.distance2 = 5.37738657f;
         switch (wave)
         {
         case 3: // ST
-            // current score 1052 (121/32768)
-            bestparams.threshold = 0.818429947f;
-            bestparams.topbit = 1.39634514f;
-            bestparams.distance1 = 1.94073832f;
-            bestparams.distance2 = 2.35836387f;
+            // current score 1048 (120/32768)
+            bestparams.threshold = 0.814103305f;
+            bestparams.topbit = 1.17548299f;
+            bestparams.distance1 = 1.88967574f;
+            bestparams.distance2 = 2.32063961f;
             break;
         case 5: // PT
             // current score 3670 (140/32768)
@@ -635,12 +637,12 @@ bestparams.distance2 = 5.37738657f;
             bestparams.distance2 = 1.72867715f;
             break;
         case 6: // PS
-            // current score 9380 (399/32768)
-            bestparams.threshold = 0.979305446f;
-            bestparams.pulsestrength = 1.16381335f;
-            bestparams.topbit = 0.986514628f;
-            bestparams.distance1 = 0.0193593223f;
-            bestparams.distance2 = 0.475249112f;
+            // current score 9312 (398/32768)
+            bestparams.threshold = 0.980230451f;
+            bestparams.pulsestrength = 1.17020738f;
+            bestparams.topbit = 0.987197578f;
+            bestparams.distance1 = 0.0191217829f;
+            bestparams.distance2 = 0.472027928f;
             break;
         case 7: // PST
             // current score 3327 (66/32768)
@@ -665,11 +667,11 @@ bestparams.distance2 = 5.37738657f;
             bestparams.distance2 = 1.51800942f;
             break;
         case 5: // PT
-            // current score 5204 (244/32768)
-            bestparams.threshold = 0.926222563f;
-            bestparams.pulsestrength = 1.97369242f;
-            bestparams.distance1 = 0.0908993334f;
-            bestparams.distance2 = 0.23501052f;
+            // current score 5194 (240/32768)
+            bestparams.threshold = 0.924824238f;
+            bestparams.pulsestrength = 1.96749473f;
+            bestparams.distance1 = 0.0891806409f;
+            bestparams.distance2 = 0.234794483f;
             break;
         case 6: // PS
             // current score 31015 (2181/32768)
