@@ -89,7 +89,7 @@ class Parameters
 private:
     typedef float (*distance_t)(float, int);
 
-private:
+public:
     // Distance functions
     static float exponentialDistance(float distance, int i)
     {
@@ -107,7 +107,12 @@ private:
     }
 
 public:
-    float threshold, pulsestrength, topbit, distance1, distance2;
+    distance_t distFunc;
+    float threshold;
+    float pulsestrength;
+    float topbit;
+    float distance1;
+    float distance2;
 
 public:
     Parameters() { reset(); }
@@ -277,13 +282,6 @@ public:
          * TODO: try to come up with a generic distance function to
          * cover all scenarios...
          */
-        //const distance_t distFunc = (wave & 4) == 4 ? linearDistance : exponentialDistance;
-        distance_t distFunc;
-        if (is8580)
-            distFunc = (wave & 1) == 1 ? exponentialDistance : quadraticDistance;
-        else
-            distFunc = (wave & 4) == 4 ? linearDistance : exponentialDistance;
-
         float wa[12 * 2 + 1];
         wa[12] = 1.f;
         for (int i = 12; i > 0; i--)
