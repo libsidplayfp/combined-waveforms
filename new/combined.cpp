@@ -1121,6 +1121,135 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
+    else if (strcmp(chip, "8580_3987") == 0)
+    {
+        is8580 = true;
+
+        switch (wave)
+        {
+        case 3: // ST
+            // current score 2084 (291/32768)
+            bestparams.threshold = 0.703916728f;
+            bestparams.topbit = 0.909722805f;
+            bestparams.distance1 = 1.45713067f;
+            bestparams.distance2 = 3.13566065f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        case 5: // PT
+            // current score 9212 (287/32768)
+            bestparams.threshold = 0.903500497f;
+            bestparams.pulsestrength = 1.02719498f;
+            bestparams.distance1 = 1.06971335f;
+            bestparams.distance2 = 1.4370302f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        case 6: // PS
+            // current score 11109 (503/32768)
+            bestparams.threshold = 0.933880389f;
+            bestparams.pulsestrength = 1.29445052f;
+            bestparams.topbit = 1.06563056f;
+            bestparams.distance1 = 0.000236776366f;
+            bestparams.distance2 = 0.152991742f;
+            bestparams.distFunc = Parameters::quadraticDistance;
+            break;
+        case 7: // PST
+            // current score 5230 (160/32768)
+            bestparams.threshold = 0.858366966f;
+            bestparams.pulsestrength = 0.104081295f;
+            bestparams.topbit = 0.86901176f;
+            bestparams.distance1 = 1.22026873f;
+            bestparams.distance2 = 2.79169726f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        }
+    }
+
+    else if (strcmp(chip, "8580_4388") == 0)
+    {
+        is8580 = true;
+
+        switch (wave)
+        {
+        case 3: // ST
+            // current score 2274 (288/32768)
+            bestparams.threshold = 0.727870882f;
+            bestparams.topbit = 0.981630623f;
+            bestparams.distance1 = 1.62720287f;
+            bestparams.distance2 = 3.45849872f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        case 5: // PT
+            // current score 7549 (192/32768)
+            bestparams.threshold = 0.933463514f;
+            bestparams.pulsestrength = 1.24167061f;
+            bestparams.distance1 = 1.07614005f;
+            bestparams.distance2 = 1.32810688f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        case 6: // PS
+            // current score 14028 (521/32768)
+            bestparams.threshold = 0.973695457f;
+            bestparams.pulsestrength = 1.51140547f;
+            bestparams.topbit = 1.06569493f;
+            bestparams.distance1 = 0.0182949118f;
+            bestparams.distance2 = 0.109501146f;
+            bestparams.distFunc = Parameters::quadraticDistance;
+            break;
+        case 7: // PST
+            // current score 5262 (87/32768)
+            bestparams.threshold = 0.980877638f;
+            bestparams.pulsestrength = 1.36146891f;
+            bestparams.topbit = 1.07633293f;
+            bestparams.distance1 = 0.907621384f;
+            bestparams.distance2 = 1.34616482f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        }
+    }
+
+    else if (strcmp(chip, "8580_4589") == 0)
+    {
+        is8580 = true;
+
+        switch (wave)
+        {
+        case 3: // ST
+            // current score 12084 (360/32768)
+            bestparams.threshold = 0.711074412f;
+            bestparams.topbit = 0.947770417f;
+            bestparams.distance1 = 1.55405724f;
+            bestparams.distance2 = 3.37904644f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        case 5: // PT
+            // current score 7835 (255/32768)
+            bestparams.threshold = 0.916386724f;
+            bestparams.pulsestrength = 1.23537338f;
+            bestparams.distance1 = 1.04378891f;
+            bestparams.distance2 = 1.40279818f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        case 6: // PS
+            // current score 14956 (637/32768)
+            bestparams.threshold = 0.935831308f;
+            bestparams.pulsestrength = 1.32716918f;
+            bestparams.topbit = 1.06479156f;
+            bestparams.distance1 = 0.0102654463f;
+            bestparams.distance2 = 0.177041769f;
+            bestparams.distFunc = Parameters::quadraticDistance;
+            break;
+        case 7: // PST
+            // current score 9867 (227/32768)
+            bestparams.threshold = 0.888757348f;
+            bestparams.pulsestrength = 0.0402527526f;
+            bestparams.topbit = 0.945833206f;
+            bestparams.distance1 = 1.31806123f;
+            bestparams.distance2 = 4.1472621f;
+            bestparams.distFunc = Parameters::exponentialDistance;
+            break;
+        }
+    }
+
     else if (strcmp(chip, "broken0384") == 0)
     {
         switch (wave)
