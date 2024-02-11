@@ -55,10 +55,10 @@ const char* chips[] =
     "8580R5_5092_25_2",
     "8580_0590",
     "8580_3493",
-    "8580_5092",
-    "8580_1087",
+    "8580_5092", // weak
+    "8580_1087", // very weak
     "8580_1088",
-    "8580_1489",
+    "8580_1489", // strong
     "8580_1891",
     "8580_3190",
     "8580_3491",
@@ -96,31 +96,27 @@ static ref_vector_t ReadChip(int wave, const char* chip)
 
 int main(int argc, const char* argv[])
 {
-    if (argc != 2)
+    for ( int wave : { 3,5,6,7 } )
     {
-        std::cout << "Usage " << argv[0] << " <waveform>" << std::endl;
-        exit(-1);
-    }
-
-    const int wave = atoi(argv[1]);
-    assert(wave == 3 || wave == 5 || wave == 6 || wave == 7);
-
-    for (const char* chip: chips)
-    {
-        ref_vector_t reference = ReadChip(wave, chip);
-        int i=0;
-        //rows[i++].append(chip).append(",");
-        for (unsigned int val: reference)
+        for (const char* chip: chips)
         {
-            rows[i++].append(std::to_string(val)).append(",");
+            ref_vector_t reference = ReadChip(wave, chip);
+            int i=0;
+            //rows[i++].append(chip).append(",");
+            for (unsigned int val: reference)
+            {
+                rows[i++].append(std::to_string(val)).append(",");
+            }
         }
-    }
 
-    std::ostringstream fileName;
-    fileName << "wave0" << wave << ".csv";
-    std::ofstream ofs(fileName.str().c_str());
-    for (std::string row: rows)
-    {
-        ofs << row << std::endl;
+        std::ostringstream fileName;
+        fileName << "wave0" << wave << ".csv";
+        std::cout << "Saving " << fileName.str() << std::endl;
+        std::ofstream ofs(fileName.str().c_str());
+        for (std::string row: rows)
+        {
+            ofs << row << std::endl;
+        }
+
     }
 }
