@@ -31,34 +31,34 @@ typedef std::vector<unsigned int> ref_vector_t;
 
 const char* chips[] =
 {
-    // R2
+    // 6581 R2
     "locu128_6581_cbm_4383",
+    "6581_0784",
+    "6581_3084",
+    "6581_1585",
+    "cbm3384",
     "cbm4383",
     "broken0384",
-    "0784",
-    "3084",
-    "cbm3384",
-    "6581_1585",
-    // R3
-    "r34785",
-    "r34885",
-    "r30486s",
-    // R4
-    "r4ar448614",
-    "r4ar528614",
-    "6581R4AR-3488_14",
+    // 6581 R3
+    "6581R3_4785",
+    "6581R3_4885",
+    "6581R3_0486_S",
+    // 6581 R4AR
+    "6581R4AR_4486_14",
+    "6581R4AR_5286_14",
+    "6581R4AR_3488_14",
+    "6581R4AR_3789_14",
     "brokenr4ar3488",
-    "r4ar378914",
     "brokenr4ar378914",
-    // 8580
+    // 8580 R5
     "8580R5_5092_25",
     "8580R5_5092_25_2",
     "8580_0590",
     "8580_3493",
-    "8580_5092", // weak
-    "8580_1087", // very weak
+    "8580_5092",
+    "8580_1087",
     "8580_1088",
-    "8580_1489", // strong
+    "8580_1489",
     "8580_1891",
     "8580_3190",
     "8580_3491",
@@ -69,8 +69,6 @@ const char* chips[] =
     "8550_4887",
     "8580_5092_2"
 };
-
-std::string rows[4096];
 
 /**
  * Read sampled values for specific waveform and chip.
@@ -101,11 +99,13 @@ int main(int argc, const char* argv[])
 {
     for ( int wave : { 3,5,6,7 } )
     {
+        std::string rows[4096 + 1];
+
         for (const char* chip: chips)
         {
             ref_vector_t reference = ReadChip(wave, chip);
             int i=0;
-            //rows[i++].append(chip).append(",");
+            rows[i++].append(chip).append(",");
             for (unsigned int val: reference)
             {
                 rows[i++].append(std::to_string(val)).append(",");
@@ -120,6 +120,5 @@ int main(int argc, const char* argv[])
         {
             ofs << row << std::endl;
         }
-
     }
 }

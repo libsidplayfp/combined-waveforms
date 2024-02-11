@@ -120,7 +120,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "0784") == 0)
+    else if (strcmp(chip, "6581_0784") == 0)
     {
         switch (wave)
         {
@@ -160,7 +160,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "3084") == 0)
+    else if (strcmp(chip, "6581_3084") == 0)
     {
         switch (wave)
         {
@@ -282,7 +282,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "r4ar378914") == 0)
+    else if (strcmp(chip, "6581R4AR_3789_14") == 0)
     {
         switch (wave)
         {
@@ -323,7 +323,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "r4ar448614") == 0)
+    else if (strcmp(chip, "6581R4AR_4486_14") == 0)
     {
         switch (wave)
         {
@@ -363,7 +363,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "r4ar528614") == 0)
+    else if (strcmp(chip, "6581R4AR_5286_14") == 0)
     {
         switch (wave)
         {
@@ -403,7 +403,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "r30486s") == 0)
+    else if (strcmp(chip, "6581R3_0486_S") == 0)
     {
         switch (wave)
         {
@@ -444,7 +444,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "r34785") == 0)
+    else if (strcmp(chip, "6581R3_4785") == 0)
     {
         switch (wave)
         {
@@ -485,7 +485,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "r34885") == 0)
+    else if (strcmp(chip, "6581R3_4885") == 0)
     {
         switch (wave)
         {
@@ -525,7 +525,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         }
     }
 
-    else if (strcmp(chip, "6581R4AR-3488_14") == 0)
+    else if (strcmp(chip, "6581R4AR_3488_14") == 0)
     {
         switch (wave)
         {
