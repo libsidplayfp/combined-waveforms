@@ -1,7 +1,7 @@
 /*
  * This file is part of libsidplayfp, a SID player engine.
  *
- * Copyright 2023 Leandro Nini <drfiemost@users.sourceforge.net>
+ * Copyright 2024 Leandro Nini <drfiemost@users.sourceforge.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-// g++ $CXXFLAGS -std=c++17 dump.cpp -o dump
+// g++ $CXXFLAGS -std=c++17 rms.cpp -o rms
 
 #include "chips.h"
 
@@ -26,6 +26,7 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <cmath>
 #include <cstdlib>
 #include <cassert>
 
@@ -36,8 +37,6 @@ using ref_vector_t = std::vector<unsigned int>;
  */
 static ref_vector_t ReadChip(int wave, const char* chip)
 {
-    std::cout << "Reading wave: " << wave << " for chip " << chip << std::endl;
-
     std::ostringstream fileName;
     fileName << "sidwaves/" << chip << "/6581wf" << wave << "0.dat.prg";
     std::ifstream ifs(fileName.str().c_str(), std::ifstream::in);
@@ -58,28 +57,29 @@ static ref_vector_t ReadChip(int wave, const char* chip)
 
 int main(int argc, const char* argv[])
 {
-    for ( int wave : { 3,5,6,7 } )
-    {
-        std::string rows[4096 + 1];
+    std::ofstream ofs("rms.csv");
 
-        for (const char* chip: chips)
+    for (const char* chip: chips)
+    {
+        std::cout << "Reading waves for chip " << chip << std::endl;
+        ofs << chip;
+
+        for ( int wave : { 3,5,6,7 } )
         {
+            std::cout << "Wave: " << wave;
+
             ref_vector_t reference = ReadChip(wave, chip);
-            int i=0;
-            rows[i++].append(chip).append(",");
+            double sum = 0.;
             for (unsigned int val: reference)
             {
-                rows[i++].append(std::to_string(val)).append(",");
+                double const x = val * val;
+                sum += x;
             }
+            double rms = std::sqrt(sum/4096);
+            std::cout << " RMS: " << rms << std::endl;
+            ofs << "," << rms;
         }
 
-        std::ostringstream fileName;
-        fileName << "wave0" << wave << ".csv";
-        std::cout << "Saving " << fileName.str() << std::endl;
-        std::ofstream ofs(fileName.str().c_str());
-        for (std::string row: rows)
-        {
-            ofs << row << std::endl;
-        }
+        ofs << std::endl;
     }
 }
