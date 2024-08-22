@@ -83,7 +83,7 @@ static ref_vector_t ReadChip(int wave, const char* chip)
     if (!ifs.is_open())
     {
         std::cout << "Error opening file " << fileName.str() << std::endl;
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
     ref_vector_t result;
     char buffer[4098];

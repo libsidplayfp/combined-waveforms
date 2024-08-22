@@ -1466,7 +1466,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
 
     else {
         std::cout << "Unrecognized chip" << std::endl;
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
 #endif
     if (bestparams.distance2 == 0.f)
@@ -1478,7 +1478,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         << bestscore << std::endl
         << bestparams.toString() << std::endl << std::endl;
     if (bestscore.audible_error == 0)
-        exit(0);
+        exit(EXIT_SUCCESS);
 
     /*
      * Start the Monte Carlo loop: we randomly alter parameters
@@ -1547,7 +1547,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
                 << score << std::endl
                 << p.toString() << std::endl << std::endl;
             if (score.audible_error == 0)
-                exit(0);
+                exit(EXIT_SUCCESS);
             //p.reset();
             bestparams = p;
             bestscore = score;
@@ -1591,7 +1591,7 @@ static ref_vector_t ReadChip(int wave, const char* chip)
     if (!ifs.is_open())
     {
         std::cout << "Error opening file " << fileName.str() << std::endl;
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
     ref_vector_t result;
     char buffer[4098];
@@ -1608,7 +1608,7 @@ int main(int argc, const char* argv[])
     if (argc != 3)
     {
         std::cout << "Usage " << argv[0] << " <waveform> <chip>" << std::endl;
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
 
     const int wave = atoi(argv[1]);
