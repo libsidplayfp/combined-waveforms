@@ -75,7 +75,7 @@ int main(int argc, const char* argv[])
                 double const x = val * val;
                 sum += x;
             }
-            double rms = std::sqrt(sum/4096);
+            double const rms = std::sqrt(sum/4096.0);
             std::cout << " RMS: " << rms << std::endl;
             ofs << "," << rms;
         }
