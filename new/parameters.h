@@ -56,10 +56,13 @@ struct score_t
 
     unsigned int total_bits;
 
+    double rms;
+
     score_t() :
         audible_error(0),
         wrong_bits(0),
-        total_bits(4096*8)
+        total_bits(4096*8),
+        rms(0.)
     {}
 
     std::string wrongBitsRate() const
@@ -80,7 +83,7 @@ struct score_t
 std::ostream & operator<<(std::ostream & os, const score_t & foo)
 {
    os.precision(2);
-   os << foo.audible_error << " (" << std::fixed << foo.wrongBitsRate() << ")";
+   os << foo.audible_error << " (" << std::fixed << foo.wrongBitsRate() << ") [RMS: " << foo.rms << "]";
    return os;
 }
 
@@ -294,6 +297,7 @@ public:
 
         bool done = false;
 
+        double sum = 0.;
         // loop over the 4096 oscillator values
         #pragma omp parallel for ordered
         for (unsigned int j = 0; j < 4096; j++)
@@ -349,6 +353,9 @@ public:
                 const unsigned int simval = GetScore8(bitarray);
                 const unsigned int refval = reference[j];
                 unsigned int error = ScoreResult(simval, refval);
+                double const x = simval * simval;
+                #pragma omp atomic
+                sum += x;
 
                 #pragma omp atomic
                 score.audible_error += error;
@@ -381,6 +388,7 @@ public:
                 }
             }
         }
+        score.rms = std::sqrt(sum/4096.0);
         return score;
     }
 };
