@@ -1,10 +1,14 @@
-.phony: all clean
+.PHONY: all clean
 
-all: combined.exe
+# Uncomment to enable parallel processing
+FLAG_OPENMP = -fopenmp
+
+CXXFLAGS = -march=native -O3
+
+all: clean combined
 
 clean:
-	rm -f combined.exe
+	$(RM) combined
 
-%.exe: %.cs
-	gmcs -optimize -d:DEBUG "$<"
-
+%: %.cpp
+	$(CXX) $(CXXFLAGS) $(FLAG_OPENMP) -std=c++11 $< -o $@
