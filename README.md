@@ -131,6 +131,9 @@ phi2 |   1   |  1  | 0  1  1       X <-> X    |   A <-> A
 ~~~
 _shift activated by bit 19_
 
+
+While the test bit is held high shift phase 1 is repeated at every cycle. After some time, depending on technology and temperature, the bits turn high, as the input of the inverters is left floating.
+
 ~~~
      |      |                bit n     |   bit n+1
      | test | LC c1 c2    latch output | latch output
