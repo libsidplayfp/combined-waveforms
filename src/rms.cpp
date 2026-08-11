@@ -69,10 +69,12 @@ int main(int argc, const char* argv[])
             std::cout << "Wave: " << wave;
 
             ref_vector_t reference = ReadChip(wave, chip);
+            unsigned int offset = reference[0x7ff]; // 0x9c0
             double sum = 0.;
             for (unsigned int val: reference)
             {
-                double const x = val * val;
+                int sample = val - offset;
+                double const x = sample * sample;
                 sum += x;
             }
             double const rms = std::sqrt(sum/4096.0);
