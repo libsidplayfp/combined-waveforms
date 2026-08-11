@@ -2,10 +2,10 @@
 
 Tools to estimate the combined waveforms model parameters using the Monte-Carlo method based on samplings from real chips.
 
-* combined: tool to estimate the model parameters based on samples;
-* dump: saves the samples in csv format;
-* rms: calculates the RMS of the samples for each combined waveform;
-* voice_sweep: a BASIC program that plays a sweep for each waveform from $1 to $8.
+* `combined`: tool to estimate the model parameters based on samples;
+* `dump`: saves the samples in csv format;
+* `rms`: calculates the RMS of the samples for each combined waveform;
+* `voice_sweep`: a BASIC program that plays a sweep for each waveform from $1 to $8.
 
 Tools by Antti Lankila and Leandro Nini
 
@@ -158,11 +158,11 @@ _shift activated by test bit_
 About the samplings
 ---
 
-The old ST, PS and PST samplings for the 6581 are affected by the saw top bit writeback issue: once the top bit is driven low the accumulator is altered rendering the second half of the values invalid (those from 2048 to 4095). A few PS samplings, marked as odd, seems to be in fact good for some reason (see https://github.com/libsidplayfp/libresidfp/issues/11).  
+The old ST, PS and PST samplings for the 6581 are affected by the saw top bit writeback issue: once the top bit is driven low the accumulator is altered rendering the second half of the values just a mirror of the first 2048 samples. A few PS samplings, marked as odd, seems to be in fact good, so there are reasons to think that the topbit writeback does not happen in some cases (see https://github.com/libsidplayfp/libresidfp/issues/11).  
 New samplings are no longer affected by this problem.
 
 
 Hint
 ---
 
-Perform multiple samplings on same chip and AND them toghether, this would eliminate random fluctuations and provide the base for a more stable model.
+Perform multiple samplings on same chip and AND them toghether, this would eliminate random fluctuations and provide the basis for a more stable model.
