@@ -166,3 +166,8 @@ Hint
 ---
 
 Perform multiple samplings on same chip and AND them toghether, this would eliminate random fluctuations and provide the basis for a more stable model.
+
+
+TODO
+---
+Sample and model the N+P combination
