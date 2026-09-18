@@ -24,6 +24,7 @@
 
 #include <cmath>
 
+#include <algorithm>
 #include <vector>
 #include <string>
 #include <sstream>
@@ -267,11 +268,8 @@ private:
         for (unsigned int i = 0; i < 12; i++)
         {
             float val = (bitarray[i] - threshold) * 512 + 0.5f;
-            if (val < 0.f)
-                val = 0.f;
-            else if (val > 1.f)
-                val = 1.f;
-            analogval += ldexp(val, i);
+            val = std::clamp(val, 0.f, 1.f);
+            analogval += std::ldexp(val, i);
         }
         return analogval / 16.f;
     }
@@ -370,7 +368,7 @@ public:
                               << std::setw(3) << osc << " "
                               << std::setw(2) << refval << " "
                               << std::setw(2) << simval << " "
-                              << std::setw(2) << (simval ^ refval) << " "
+                              << std::setw(2) << error << " "
 #if 0
                               << getAnalogValue(bitarray) << " "
 #endif
@@ -389,6 +387,7 @@ public:
             }
         }
         score.rms = std::sqrt(sum/4096.0);
+        //score.db = 20.*std::log10(score.rms);
         return score;
     }
 };

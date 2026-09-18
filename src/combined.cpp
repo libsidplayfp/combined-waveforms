@@ -370,7 +370,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 18860 (1155/32768) [RMS: 79.93]6581R4AR_5286_14
+            // current score 18860 (1155/32768) [RMS: 79.93]
             bestparams.distFunc = Parameters::exponentialDistance;
             bestparams.threshold = 0.00316550909f;
             bestparams.topbit = 0.00317018107f;
