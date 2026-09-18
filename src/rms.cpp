@@ -29,6 +29,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <cassert>
+#include <cstring>
 
 using ref_vector_t = std::vector<unsigned int>;
 
@@ -64,21 +65,25 @@ int main(int argc, const char* argv[])
         std::cout << "Reading waves for chip " << chip << std::endl;
         ofs << chip;
 
+        bool is6581 = !std::strstr(chip, "8580");
+
         for ( int wave : { 3,5,6,7 } )
         {
             std::cout << "Wave: " << wave;
 
             ref_vector_t reference = ReadChip(wave, chip);
-            unsigned int offset = reference[0x7ff]; // 0x9c0
+            unsigned int offset = reference[is6581 ? 0x9c0 : 0x7ff];
             double sum = 0.;
             for (unsigned int val: reference)
             {
-                int sample = val - offset;
-                double const x = sample * sample;
+                int sample = (val << 4) - offset;
+                double sd = sample / 2048.0;
+                double const x = sd * sd;
                 sum += x;
             }
             double const rms = std::sqrt(sum/4096.0);
-            std::cout << " RMS: " << rms << std::endl;
+            double db = 20.*std::log10(rms);
+            std::cout << " RMS: " << rms << " (" << db << " dB)" << std::endl;
             ofs << "," << rms;
         }
 
