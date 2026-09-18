@@ -72,11 +72,13 @@ int main(int argc, const char* argv[])
             double sum = 0.;
             for (unsigned int val: reference)
             {
-                double const x = val * val;
+                double sample = val / 256.;
+                double const x = sample * sample;
                 sum += x;
             }
             double const rms = std::sqrt(sum/4096.0);
-            std::cout << " RMS: " << rms << std::endl;
+            double db = 20.*std::log10(rms);
+            std::cout << " RMS: " << rms << " (" << db << " dB)" << std::endl;
             ofs << "," << rms;
         }
 

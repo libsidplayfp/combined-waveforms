@@ -58,12 +58,14 @@ struct score_t
     unsigned int total_bits;
 
     double rms;
+    double db;
 
     score_t() :
         audible_error(0),
         wrong_bits(0),
         total_bits(4096*8),
-        rms(0.)
+        rms(0.),
+        db(0.)
     {}
 
     std::string wrongBitsRate() const
@@ -84,7 +86,7 @@ struct score_t
 std::ostream & operator<<(std::ostream & os, const score_t & foo)
 {
    os.precision(2);
-   os << foo.audible_error << " (" << std::fixed << foo.wrongBitsRate() << ") [RMS: " << foo.rms << "]";
+   os << foo.audible_error << " (" << std::fixed << foo.wrongBitsRate() << ") [RMS: " << foo.db << "]";
    return os;
 }
 
@@ -351,7 +353,8 @@ public:
                 const unsigned int simval = GetScore8(bitarray);
                 const unsigned int refval = reference[j];
                 unsigned int error = ScoreResult(simval, refval);
-                double const x = simval * simval;
+                double const v = simval / 256.;
+                double const x = v * v;
                 #pragma omp atomic
                 sum += x;
 
@@ -387,7 +390,7 @@ public:
             }
         }
         score.rms = std::sqrt(sum/4096.0);
-        //score.db = 20.*std::log10(score.rms);
+        score.db = 20.*std::log10(score.rms);
         return score;
     }
 };
