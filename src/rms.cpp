@@ -1,7 +1,7 @@
 /*
  * This file is part of libsidplayfp, a SID player engine.
  *
- * Copyright 2024 Leandro Nini <drfiemost@users.sourceforge.net>
+ * Copyright 2024-2026 Leandro Nini <drfiemost@users.sourceforge.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,9 +26,11 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+
 #include <cmath>
 #include <cstdlib>
-#include <cassert>
+#include <cstring>
+//#include <cassert>
 
 using ref_vector_t = std::vector<unsigned int>;
 
@@ -64,21 +66,38 @@ int main(int argc, const char* argv[])
         std::cout << "Reading waves for chip " << chip << std::endl;
         ofs << chip;
 
+        bool is6581 = !std::strstr(chip, "8580");
+
         for ( int wave : { 3,5,6,7 } )
         {
             std::cout << "Wave: " << wave;
 
+            bool saw_msb = is6581 && (wave & 2);
+
             ref_vector_t reference = ReadChip(wave, chip);
             double sum = 0.;
+            int i = 0;
+            double halfRMS = 0.;
             for (unsigned int val: reference)
             {
                 double sample = val / 256.;
                 double const x = sample * sample;
                 sum += x;
+                i++;
+                if (saw_msb && (i == 2048))
+                {
+                    halfRMS = std::sqrt(sum/2048.0);
+                    halfRMS = 20.*std::log10(halfRMS);
+                }
             }
             double const rms = std::sqrt(sum/4096.0);
             double db = 20.*std::log10(rms);
-            std::cout << " RMS: " << rms << " (" << db << " dB)" << std::endl;
+            std::cout << " RMS: " << rms << " (" << db << " dB";
+            if (saw_msb)
+            {
+                std::cout << " / " << halfRMS << " dB";
+            }
+            std::cout << ")" << std::endl;
             ofs << "," << rms;
         }
 

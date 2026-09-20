@@ -1,7 +1,7 @@
 /*
  * This file is part of libsidplayfp, a SID player engine.
  *
- * Copyright 2013-2023 Leandro Nini <drfiemost@users.sourceforge.net>
+ * Copyright 2013-2026 Leandro Nini <drfiemost@users.sourceforge.net>
  * Copyright 2007-2010 Antti Lankila
  *
  * This program is free software; you can redistribute it and/or modify
@@ -245,9 +245,9 @@ private:
     /**
      * Calculate audible error.
      */
-    static unsigned int ScoreResult(unsigned int a, unsigned int b)
+    static inline unsigned int ScoreResult(unsigned int sim, unsigned int ref)
     {
-        return a ^ b;
+        return ref ^ sim;
     }
 
     /**
@@ -297,6 +297,9 @@ public:
 
         bool done = false;
 
+        bool saw = (wave & 2);
+        bool saw_msb = saw && !is8580;
+
         double sum = 0.;
         // loop over the 4096 oscillator values
         #pragma omp parallel for ordered
@@ -307,7 +310,7 @@ public:
             {
                 // saw/tri: if saw is not selected the bits are XORed
                 unsigned int osc =
-                    (wave & 2) ? j : ((j & 0x800) == 0 ? j : (j ^ 0xfff)) << 1;
+                    saw ? j : (((j & 0x800) == 0 ? j : (j ^ 0xfff)) << 1);
 
                 // saw+tri
                 // If both Saw and Triangle are selected the bits are interconnected
@@ -338,12 +341,9 @@ public:
                 }
 
                 // topbit for Saw
-                if ((wave & 2) == 2)
+                if (saw)
                 {
                     // Why does this happen?
-                    // For 6581 this is mostly 0 while for 8580 it's near 1
-                    // A few 'odd' 6581 chips show a strangely high value
-                    // for Pulse-Saw combination
                     bitarray[11] *= topbit;
                 }
 
@@ -355,11 +355,14 @@ public:
                 unsigned int error = ScoreResult(simval, refval);
                 double const v = simval / 256.;
                 double const x = v * v;
+                // Ignore second half of the waveform errors
+                // if we have saw on 6581
+                unsigned int w_err = saw_msb && (j > 2047) ? 0 : error;
                 #pragma omp atomic
                 sum += x;
 
                 #pragma omp atomic
-                score.audible_error += error;
+                score.audible_error += w_err;
                 #pragma omp atomic
                 score.wrong_bits += WrongBits(error);
 
@@ -378,6 +381,7 @@ public:
                               << std::endl;
                 }
 
+                //score.audible_error = std::sqrt(score.audible_error);
                 // halt if we already are worst than the best score
                 if (score.audible_error > bestscore)
                 {
