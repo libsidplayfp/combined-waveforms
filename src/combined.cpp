@@ -33,6 +33,7 @@
 
 #include "parameters.h"
 
+#define CHANGE_DEV
 
 static const float EPSILON = 1e-4;
 
@@ -53,9 +54,11 @@ inline long getSeed()
 }
 #endif
 
+static double stddev = 0.0001;
+
 static std::default_random_engine prng(getSeed());
 
-static std::normal_distribution<> normal_dist(1.0, 0.02);
+static std::normal_distribution<> normal_dist(1.0, stddev);
 static std::normal_distribution<> normal_dist2(0.5, 0.2);
 
 static double GetRandomValue()
@@ -85,11 +88,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 751 (390/32768) [RMS: -13.56]
-            bestparams.threshold = 0.885195196f;
-            bestparams.topbit = 1.48950899f;
-            bestparams.distance1 = 2.02920771f;
-            bestparams.distance2 = 3.7329123f;
+            // current score 169 (843/32768) [RMS: -14.61]
+            bestparams.threshold = 0.946056068f;
+            bestparams.topbit = 26.9527836f;
+            bestparams.distance1 = 6.38644743f;
+            bestparams.distance2 = 3.61852479f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
@@ -101,12 +104,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 0.0986242667f;
             break;
         case 6: // PS
-            // current score 5 (1536/32768) [RMS: -15.71]
-            bestparams.threshold = 0.74411875f;
-            bestparams.pulsestrength = 0.232185543f;
-            bestparams.topbit = 0.062505953f;
-            bestparams.distance1 = 0.0717892349f;
-            bestparams.distance2 = 0.000250642159f;
+            // current score 5 (1535/32768) [RMS: -15.71]
+            bestparams.threshold = 0.760607481f;
+            bestparams.pulsestrength = 0.407531887f;
+            bestparams.topbit = 0.0588437207f;
+            bestparams.distance1 = 0.0994859114f;
+            bestparams.distance2 = 0.000200334835f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
@@ -167,11 +170,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 483 (450/32768) [RMS: -13.17]
-            bestparams.threshold = 0.8754071f;
-            bestparams.topbit = 5.05079842f;
-            bestparams.distance1 = 4.10759544f;
-            bestparams.distance2 = 3.69861078f;
+            // current score 483 (448/32768) [RMS: -13.17]
+            bestparams.threshold = 0.890794635f;
+            bestparams.topbit = 5.24449015f;
+            bestparams.distance1 = 4.62662935f;
+            bestparams.distance2 = 4.23713732f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
@@ -183,21 +186,21 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 144 (1083/32768) [RMS: -10.64]
-            bestparams.threshold = 1.20781219f;
-            bestparams.pulsestrength = 4.51915121f;
-            bestparams.topbit = 1.3795054f;
-            bestparams.distance1 = 0.0633469224f;
-            bestparams.distance2 = 0.0802473426f;
+            // current score 144 (1078/32768) [RMS: -10.63]
+            bestparams.threshold = 1.19699228f;
+            bestparams.pulsestrength = 4.41826534f;
+            bestparams.topbit = 1.38852525f;
+            bestparams.distance1 = 0.0604045726f;
+            bestparams.distance2 = 0.0815515071f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
-            // current score 3 (257/32768) [RMS: -18.58]
-            bestparams.threshold = 1.71266961f;
-            bestparams.pulsestrength = 2.02621317f;
-            bestparams.topbit = 0.00574938022f;
-            bestparams.distance1 = 1.57895577f;
-            bestparams.distance2 = 1.37034345f;
+            // current score 3 (250/32768) [RMS: -18.45]
+            bestparams.threshold = 1.69891477f;
+            bestparams.pulsestrength = 1.99595749f;
+            bestparams.topbit = 0.00578480121f;
+            bestparams.distance1 = 1.57269251f;
+            bestparams.distance2 = 1.37823129f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         }
@@ -208,11 +211,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 242 (970/32768) [RMS: -12.63]
-            bestparams.threshold = 0.830523849f;
-            bestparams.topbit = 8.53260136f;
-            bestparams.distance1 = 3.1122036f;
-            bestparams.distance2 = 2.65378499f;
+            // current score 242 (964/32768) [RMS: -12.63]
+            bestparams.threshold = 0.841265261f;
+            bestparams.topbit = 10.0567818f;
+            bestparams.distance1 = 3.29666662f;
+            bestparams.distance2 = 2.94648147f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
@@ -224,21 +227,21 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 6: // PS
-            // current score 361 (1126/32768) [RMS: -9.13]
-            bestparams.threshold = 1.23311937f;
-            bestparams.pulsestrength = 4.07948732f;
-            bestparams.topbit = 1.58626962f;
-            bestparams.distance1 = 0.13691774f;
-            bestparams.distance2 = 0.155669421f;
+            // current score 361 (1125/32768) [RMS: -9.14]
+            bestparams.threshold = 1.23285437f;
+            bestparams.pulsestrength = 4.07586765f;
+            bestparams.topbit = 1.58522534f;
+            bestparams.distance1 = 0.137179226f;
+            bestparams.distance2 = 0.155834228f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
-            // current score 124 (278/32768) [RMS: -18.31]
-            bestparams.threshold = 1.07696235f;
-            bestparams.pulsestrength = 1.72518933f;
-            bestparams.topbit = 1.75790918f;
-            bestparams.distance1 = 0.345677555f;
-            bestparams.distance2 = 0.434917927f;
+            // current score 124 (277/32768) [RMS: -18.28]
+            bestparams.threshold = 1.06343484f;
+            bestparams.pulsestrength = 1.6654166f;
+            bestparams.topbit = 1.73890376f;
+            bestparams.distance1 = 0.341213256f;
+            bestparams.distance2 = 0.438477188f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         }
@@ -265,21 +268,21 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 0.162516415f;
             break;
         case 6: // PS
-            // current score 337 (1020/32768) [RMS: -10.22]
-            bestparams.threshold = 1.09252477f;
-            bestparams.pulsestrength = 3.45962834f;
-            bestparams.topbit = 1.48039985f;
-            bestparams.distance1 = 0.0714268684f;
-            bestparams.distance2 = 0.100377731f;
+            // current score 337 (1019/32768) [RMS: -10.22]
+            bestparams.threshold = 1.09263694f;
+            bestparams.pulsestrength = 3.46004915f;
+            bestparams.topbit = 1.47997165f;
+            bestparams.distance1 = 0.0714207962f;
+            bestparams.distance2 = 0.100400507f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
-            // current score 56 (233/32768) [RMS: -20.35]
-            bestparams.threshold = 1.10278761f;
-            bestparams.pulsestrength = 2.43588948f;
-            bestparams.topbit = 1.87595975f;
-            bestparams.distance1 = 0.178646505f;
-            bestparams.distance2 = 0.224552304f;
+            // current score 56 (230/32768) [RMS: -20.32]
+            bestparams.threshold = 1.06856573f;
+            bestparams.pulsestrength = 2.14276409f;
+            bestparams.topbit = 1.85001004f;
+            bestparams.distance1 = 0.190060407f;
+            bestparams.distance2 = 0.248597205f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         }
@@ -290,11 +293,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 905 (712/32768) [RMS: -13.57]
-            bestparams.threshold = 0.988546371f;
-            bestparams.topbit = 1.10214388f;
-            bestparams.distance1 = 8.60669518f;
-            bestparams.distance2 = 23.9268799f;
+            // current score 209 (1115/32768) [RMS: -17.60]
+            bestparams.threshold = 0.931225896f;
+            bestparams.topbit = 0.923819304f;
+            bestparams.distance1 = 5.42964125f;
+            bestparams.distance2 = 3.36991525f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
@@ -306,12 +309,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 0.203794882f;
             break;
         case 6: // PS
-            // current score 113 (1067/32768) [RMS: -10.38]
-            bestparams.threshold = 1.10930324f;
-            bestparams.pulsestrength = 3.50717831f;
-            bestparams.topbit = 1.47075057f;
-            bestparams.distance1 = 0.0881707147f;
-            bestparams.distance2 = 0.104346052f;
+            // current score 113 (1064/32768) [RMS: -10.37]
+            bestparams.threshold = 1.10936975f;
+            bestparams.pulsestrength = 3.50789928f;
+            bestparams.topbit = 1.47000027f;
+            bestparams.distance1 = 0.088235341f;
+            bestparams.distance2 = 0.104341723f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
@@ -339,20 +342,20 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 3604 (63/32768) [RMS: -11.20]
+            // current score 3532 (65/32768) [RMS: -11.18]
+            bestparams.threshold = 0.9854213f;
+            bestparams.pulsestrength = 2.42496276f;
+            bestparams.distance1 = 0.0374390036f;
+            bestparams.distance2 = 0.165902242f;
             bestparams.distFunc = Parameters::linearDistance;
-            bestparams.threshold = 0.998088539f;
-            bestparams.pulsestrength = 2.51015329f;
-            bestparams.distance1 = 0.0422255732f;
-            bestparams.distance2 = 0.164421782f;
             break;
         case 6: // PS
-            // current score 607 (1164/32768) [RMS: -9.61]
-            bestparams.threshold = 1.03459346f;
-            bestparams.pulsestrength = 3.16868901f;
-            bestparams.topbit = 1.43029153f;
-            bestparams.distance1 = 0.0646577701f;
-            bestparams.distance2 = 0.102762282f;
+            // current score 475 (1033/32768) [RMS: -9.03]
+            bestparams.threshold = 1.09942484f;
+            bestparams.pulsestrength = 3.33780169f;
+            bestparams.topbit = 1.39295673f;
+            bestparams.distance1 = 0.0854635611f;
+            bestparams.distance2 = 0.150579691f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
@@ -372,37 +375,37 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 242 (663/32768) [RMS: -13.18]
-            bestparams.threshold = 0.85966903f;
-            bestparams.topbit = 2.52508402f;
-            bestparams.distance1 = 3.67300773f;
-            bestparams.distance2 = 3.32991076f;
+            // current score 242 (649/32768) [RMS: -13.12]
+            bestparams.threshold = 0.854352772f;
+            bestparams.topbit = 5.2726512f;
+            bestparams.distance1 = 3.57101917f;
+            bestparams.distance2 = 2.95887995f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 5586 (147/32768) [RMS: -10.06]
+            // current score 5580 (147/32768) [RMS: -10.06]
+            bestparams.threshold = 0.96532774f;
+            bestparams.pulsestrength = 1.97139263f;
+            bestparams.distance1 = 1.03410971f;
+            bestparams.distance2 = 1.17577839f;
             bestparams.distFunc = Parameters::exponentialDistance;
-            bestparams.threshold = 0.965520382f;
-            bestparams.pulsestrength = 1.97317994f;
-            bestparams.distance1 = 1.03463221f;
-            bestparams.distance2 = 1.17572582f;
             break;
         case 6: // PS
-            // current score 469 (1221/32768) [RMS: -8.83]
-            bestparams.threshold = 1.19410479f;
-            bestparams.pulsestrength = 3.69806218f;
-            bestparams.topbit = 1.61734545f;
-            bestparams.distance1 = 0.157596424f;
-            bestparams.distance2 = 0.177035213f;
+            // current score 453 (1409/32768) [RMS: -8.74]
+            bestparams.threshold = 1.10632443f;
+            bestparams.pulsestrength = 3.13599825f;
+            bestparams.topbit = 1.72166479f;
+            bestparams.distance1 = 0.135031074f;
+            bestparams.distance2 = 0.181071475f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
-            // current score 76 (539/32768) [RMS: -20.44]
-            bestparams.threshold = 1.10539722f;
-            bestparams.pulsestrength = 1.44411063f;
-            bestparams.topbit = 0.302006781f;
-            bestparams.distance1 = 0.515361965f;
-            bestparams.distance2 = 0.703935504f;
+            // current score 76 (521/32768) [RMS: -20.32]
+            bestparams.threshold = 1.00029778f;
+            bestparams.pulsestrength = 1.38226914f;
+            bestparams.topbit = 0.815651596f;
+            bestparams.distance1 = 0.288819402f;
+            bestparams.distance2 = 0.480299562f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         }
@@ -429,12 +432,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 6: // PS
-            // current score 211 (1036/32768) [RMS: -10.33]
-            bestparams.threshold = 1.09182823f;
-            bestparams.pulsestrength = 3.42711949f;
-            bestparams.topbit = 1.41560268f;
-            bestparams.distance1 = 0.0792779177f;
-            bestparams.distance2 = 0.102292374f;
+            // current score 211 (1032/32768) [RMS: -10.32]
+            bestparams.threshold = 1.09103811f;
+            bestparams.pulsestrength = 3.41786051f;
+            bestparams.topbit = 1.42359722f;
+            bestparams.distance1 = 0.0797557309f;
+            bestparams.distance2 = 0.102569386f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
@@ -511,12 +514,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 0.14348942f;
             break;
         case 6: // PS
-            // current score 172 (866/32768) [RMS: -10.13]
-            bestparams.threshold = 1.0444051f;
-            bestparams.pulsestrength = 3.06324339f;
-            bestparams.topbit = 1.40519512f;
-            bestparams.distance1 = 0.0720482841f;
-            bestparams.distance2 = 0.108887099f;
+            // current score 172 (834/32768) [RMS: -10.08]
+            bestparams.threshold = 1.02504992f;
+            bestparams.pulsestrength = 2.92979741f;
+            bestparams.topbit = 1.43259883f;
+            bestparams.distance1 = 0.0623142533f;
+            bestparams.distance2 = 0.108534746f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
@@ -536,37 +539,37 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 255 (455/32768) [RMS: -13.57]
-            bestparams.threshold = 0.80822444f;
-            bestparams.topbit = 2.20796704f;
-            bestparams.distance1 = 2.83114409f;
-            bestparams.distance2 = 2.34842539f;
+            // current score 255 (452/32768) [RMS: -13.56]
+            bestparams.threshold = 0.806933343f;
+            bestparams.topbit = 2.21477556f;
+            bestparams.distance1 = 2.81543303f;
+            bestparams.distance2 = 2.35701466f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 3518 (72/32768) [RMS: -11.95]
-            bestparams.threshold = 0.963632345f;
-            bestparams.pulsestrength = 2.06904531f;
-            bestparams.distance1 = 0.0287600756f;
-            bestparams.distance2 = 0.183034822f;
+            // current score 3516 (70/32768) [RMS: -11.95]
+            bestparams.threshold = 0.962648809f;
+            bestparams.pulsestrength = 2.06163311f;
+            bestparams.distance1 = 0.0289246459f;
+            bestparams.distance2 = 0.183156878f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 6: // PS
-            // current score 216 (910/32768) [RMS: -10.66]
-            bestparams.threshold = 0.878465831f;
-            bestparams.pulsestrength = 1.91333973f;
-            bestparams.topbit = 1.2073791f;
-            bestparams.distance1 = 0.00125265087f;
-            bestparams.distance2 = 0.0837968513f;
+            // current score 204 (936/32768) [RMS: -10.75]
+            bestparams.threshold = 0.852842271f;
+            bestparams.pulsestrength = 1.68666494f;
+            bestparams.topbit = 1.18602562f;
+            bestparams.distance1 = 0.00126632315f;
+            bestparams.distance2 = 0.0858733431f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
-            // current score 65 (204/32768) [RMS: -20.71]
-            bestparams.threshold = 0.827495337f;
-            bestparams.pulsestrength = 0.933227003f;
-            bestparams.topbit = 1.36435914f;
-            bestparams.distance1 = 0.0481203347f;
-            bestparams.distance2 = 0.223367706f;
+            // current score 57 (179/32768) [RMS: -20.13]
+            bestparams.threshold = 0.973592043f;
+            bestparams.pulsestrength = 1.39669251f;
+            bestparams.topbit = 1.48668134f;
+            bestparams.distance1 = 0.229719117f;
+            bestparams.distance2 = 0.351197541f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         }
@@ -618,11 +621,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 878 (407/32768) [RMS: -13.47]
-            bestparams.threshold = 0.893505216f;
-            bestparams.topbit = 1.48727369f;
-            bestparams.distance1 = 2.0544138f;
-            bestparams.distance2 = 3.9500246f;
+            // current score 78 (927/32768) [RMS: -20.08]
+            bestparams.threshold = 0.95052433f;
+            bestparams.topbit = 0.176136687f;
+            bestparams.distance1 = 6.97077751f;
+            bestparams.distance2 = 3.79802465f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
@@ -704,12 +707,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 1048 (120/32768) [RMS: -13.56]
+            // current score 923 (135/32768) [RMS: -13.49]
+            bestparams.threshold = 0.762481153f;
+            bestparams.topbit = 1.05701602f;
+            bestparams.distance1 = 1.20563996f;
+            bestparams.distance2 = 2.19636106f;
             bestparams.distFunc = Parameters::exponentialDistance;
-            bestparams.threshold = 0.814103305f;
-            bestparams.topbit = 1.17548299f;
-            bestparams.distance1 = 1.88967574f;
-            bestparams.distance2 = 2.32063961f;
             break;
         case 5: // PT
             // current score 3670 (140/32768) [RMS: -6.41]
@@ -720,12 +723,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distance2 = 1.72867715f;
             break;
         case 6: // PS
-            // current score 9244 (407/32768) [RMS: -6.95]
-            bestparams.threshold = 0.982130826f;
-            bestparams.pulsestrength = 1.19545388f;
-            bestparams.topbit = 0.984055102f;
-            bestparams.distance1 = 0.0200770069f;
-            bestparams.distance2 = 0.456685066f;
+            // current score 9235 (403/32768) [RMS: -6.95]
+            bestparams.threshold = 0.982675791f;
+            bestparams.pulsestrength = 1.19733763f;
+            bestparams.topbit = 0.984847903f;
+            bestparams.distance1 = 0.0200310666f;
+            bestparams.distance2 = 0.455898285f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
@@ -763,12 +766,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 10895 (435/32768) [RMS: -7.53]
-            bestparams.threshold = 0.944479704f;
-            bestparams.pulsestrength = 1.19168735f;
-            bestparams.topbit = 0.990218341f;
-            bestparams.distance1 = 0.00204254151f;
-            bestparams.distance2 = 0.296270579f;
+            // current score 10795 (435/32768) [RMS: -7.53]
+            bestparams.threshold = 0.946380913f;
+            bestparams.pulsestrength = 1.2029047f;
+            bestparams.topbit = 0.997707188f;
+            bestparams.distance1 = 0.00201191567f;
+            bestparams.distance2 = 0.290461034f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
@@ -790,11 +793,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 1167 (130/32768) [RMS: -13.56]
-            bestparams.threshold = 0.812157929f;
-            bestparams.topbit = 1.19008696f;
-            bestparams.distance1 = 1.8724792f;
-            bestparams.distance2 = 2.3072772f;
+            // current score 844 (136/32768) [RMS: -13.45]
+            bestparams.threshold = 0.724700212f;
+            bestparams.topbit = 1.11193025f;
+            bestparams.distance1 = 1.3567102f;
+            bestparams.distance2 = 2.25340843f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
@@ -806,12 +809,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 9499 (349/32768) [RMS: -7.68]
-            bestparams.threshold = 0.967251718f;
-            bestparams.pulsestrength = 1.20654142f;
-            bestparams.topbit = 0.966849685f;
-            bestparams.distance1 = 0.00760078849f;
-            bestparams.distance2 = 0.314019769f;
+            // current score 9434 (347/32768) [RMS: -7.68]
+            bestparams.threshold = 0.967761934f;
+            bestparams.pulsestrength = 1.20811367f;
+            bestparams.topbit = 0.968534827f;
+            bestparams.distance1 = 0.0075986716f;
+            bestparams.distance2 = 0.313736677f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
@@ -833,37 +836,37 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 2143 (187/32768) [RMS: -13.31]
-            bestparams.threshold = 0.688183069f;
-            bestparams.topbit = 0.929571509f;
-            bestparams.distance1 = 1.21250761f;
-            bestparams.distance2 = 2.13566232f;
+            // current score 2134 (184/32768) [RMS: -13.31]
+            bestparams.threshold = 0.702459991f;
+            bestparams.topbit = 0.975484133f;
+            bestparams.distance1 = 1.25884247f;
+            bestparams.distance2 = 2.25034642f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 8480 (213/32768) [RMS: -7.47]
-            bestparams.threshold = 0.955921412f;
-            bestparams.pulsestrength = 1.13047683f;
-            bestparams.distance1 = 1.09507132f;
-            bestparams.distance2 = 1.51376963f;
+            // current score 8468 (209/32768) [RMS: -7.47]
+            bestparams.threshold = 0.955855966f;
+            bestparams.pulsestrength = 1.13067317f;
+            bestparams.distance1 = 1.09514272f;
+            bestparams.distance2 = 1.51367176f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 10798 (447/32768) [RMS: -7.84]
-            bestparams.threshold = 0.925701499f;
-            bestparams.pulsestrength = 1.09079564f;
-            bestparams.topbit = 0.977671206f;
-            bestparams.distance1 = 0.000129987471f;
-            bestparams.distance2 = 0.285061598f;
+            // current score 10781 (438/32768) [RMS: -7.84]
+            bestparams.threshold = 0.926709116f;
+            bestparams.pulsestrength = 1.09496796f;
+            bestparams.topbit = 0.97637248f;
+            bestparams.distance1 = 0.000130610671f;
+            bestparams.distance2 = 0.283982545f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
-            // current score 7247 (117/32768) [RMS: -13.46]
-            bestparams.threshold = 0.897638917f;
-            bestparams.pulsestrength = 0.602467358f;
-            bestparams.topbit = 1.01111174f;
-            bestparams.distance1 = 1.12252307f;
-            bestparams.distance2 = 1.67404807f;
+            // current score 7245 (116/32768) [RMS: -13.46]
+            bestparams.threshold = 0.899005055f;
+            bestparams.pulsestrength = 0.601432741f;
+            bestparams.topbit = 1.01393855f;
+            bestparams.distance1 = 1.12622178f;
+            bestparams.distance2 = 1.67641866f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         }
@@ -876,19 +879,19 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 1615 (134/32768) [RMS: -13.55]
-            bestparams.threshold = 0.791922331f;
-            bestparams.topbit = 1.27795017f;
-            bestparams.distance1 = 1.77714765f;
-            bestparams.distance2 = 2.21664143f;
+            // current score 1473 (168/32768) [RMS: -13.47]
+            bestparams.threshold = 0.710448802f;
+            bestparams.topbit = 1.11656249f;
+            bestparams.distance1 = 1.30863619f;
+            bestparams.distance2 = 2.02344704f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 7898 (162/32768) [RMS: -8.63]
-            bestparams.threshold = 0.9482705f;
-            bestparams.pulsestrength = 1.21793139f;
-            bestparams.distance1 = 1.04166055f;
-            bestparams.distance2 = 1.37272894f;
+            // current score 7890 (168/32768) [RMS: -8.62]
+            bestparams.threshold = 0.946508229f;
+            bestparams.pulsestrength = 1.21882367f;
+            bestparams.distance1 = 1.0407542f;
+            bestparams.distance2 = 1.37056279f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
@@ -970,11 +973,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 9266 (508/32768) [RMS: -6.03]
-            bestparams.threshold = 0.87147671f;
-            bestparams.pulsestrength = 1.44887495f;
-            bestparams.distance1 = 1.05899632f;
-            bestparams.distance2 = 1.43786001f;
+            // current score 9242 (504/32768) [RMS: -6.03]
+            bestparams.threshold = 0.871706188f;
+            bestparams.pulsestrength = 1.44852948f;
+            bestparams.distance1 = 1.05926013f;
+            bestparams.distance2 = 1.43830109f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
@@ -1005,19 +1008,19 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 3401 (283/32768) [RMS: -11.79]
-            bestparams.threshold = 0.74335587f;
-            bestparams.topbit = 1.13261592f;
-            bestparams.distance1 = 1.83344603f;
-            bestparams.distance2 = 3.90392399f;
+            // current score 3395 (280/32768) [RMS: -11.81]
+            bestparams.threshold = 0.740850687f;
+            bestparams.topbit = 1.1147213f;
+            bestparams.distance1 = 1.80291951f;
+            bestparams.distance2 = 3.85912538f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 9150 (263/32768) [RMS: -7.54]
-            bestparams.threshold = 0.918804288f;
-            bestparams.pulsestrength = 1.1401931f;
-            bestparams.distance1 = 1.07224596f;
-            bestparams.distance2 = 1.44912469f;
+            // current score 9034 (259/32768) [RMS: -7.54]
+            bestparams.threshold = 0.917611182f;
+            bestparams.pulsestrength = 1.13679028f;
+            bestparams.distance1 = 1.07353628f;
+            bestparams.distance2 = 1.44951916f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
@@ -1064,21 +1067,21 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 14360 (668/32768) [RMS: -7.38]
-            bestparams.threshold = 0.911647439f;
-            bestparams.pulsestrength = 1.19287789f;
-            bestparams.topbit = 1.00216305f;
-            bestparams.distance1 = 0.000113861912f;
-            bestparams.distance2 = 0.257546455f;
+            // current score 14328 (667/32768) [RMS: -7.38]
+            bestparams.threshold = 0.911578476f;
+            bestparams.pulsestrength = 1.19318783f;
+            bestparams.topbit = 1.00221062f;
+            bestparams.distance1 = 0.000113086062f;
+            bestparams.distance2 = 0.257361323f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
-            // current score 8600 (135/32768) [RMS: -12.27]
-            bestparams.threshold = 0.943421066f;
-            bestparams.pulsestrength = 1.19525087f;
-            bestparams.topbit = 1.0747292f;
-            bestparams.distance1 = 0.970244825f;
-            bestparams.distance2 = 1.48792744f;
+            // current score 8599 (134/32768) [RMS: -12.27]
+            bestparams.threshold = 0.942918181f;
+            bestparams.pulsestrength = 1.19498122f;
+            bestparams.topbit = 1.0760572f;
+            bestparams.distance1 = 0.970883131f;
+            bestparams.distance2 = 1.48736346f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         }
@@ -1236,21 +1239,21 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 14820 (634/32768) [RMS: -7.99]
-            bestparams.threshold = 0.918689728f;
-            bestparams.pulsestrength = 1.22249699f;
-            bestparams.topbit = 1.04088986f;
-            bestparams.distance1 = 0.010150237f;
-            bestparams.distance2 = 0.190041497f;
+            // current score 14787 (632/32768) [RMS: -7.99]
+            bestparams.threshold = 0.918511629f;
+            bestparams.pulsestrength = 1.22237325f;
+            bestparams.topbit = 1.04048359f;
+            bestparams.distance1 = 0.0102269938f;
+            bestparams.distance2 = 0.189951181f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
-            // current score 9803 (220/32768) [RMS: -13.15]
-            bestparams.threshold = 0.882457912f;
-            bestparams.pulsestrength = 0.0400544927f;
-            bestparams.topbit = 0.932223499f;
-            bestparams.distance1 = 1.36063206f;
-            bestparams.distance2 = 4.08809948f;
+            // current score 8827 (207/32768) [RMS: -13.52]
+            bestparams.threshold = 0.887825787f;
+            bestparams.pulsestrength = 0.042996794f;
+            bestparams.topbit = 0.889274299f;
+            bestparams.distance1 = 1.31400216f;
+            bestparams.distance2 = 4.05096912f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         }
@@ -1271,11 +1274,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 8512 (236/32768) [RMS: -8.10]
-            bestparams.threshold = 0.921056628f;
-            bestparams.pulsestrength = 1.1018368f;
-            bestparams.distance1 = 1.07269633f;
-            bestparams.distance2 = 1.42056799f;
+            // current score 8496 (234/32768) [RMS: -8.10]
+            bestparams.threshold = 0.921019256f;
+            bestparams.pulsestrength = 1.10160947f;
+            bestparams.distance1 = 1.07253897f;
+            bestparams.distance2 = 1.42064273f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
@@ -1322,12 +1325,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 9856 (332/32768) [RMS: -9.45]
-            bestparams.threshold = 0.968754232f;
-            bestparams.pulsestrength = 1.29909098f;
-            bestparams.topbit = 1.00669801f;
-            bestparams.distance1 = 0.00962483883f;
-            bestparams.distance2 = 0.146850556f;
+            // current score 9849 (333/32768) [RMS: -9.45]
+            bestparams.threshold = 0.969898582f;
+            bestparams.pulsestrength = 1.30233467f;
+            bestparams.topbit = 1.00785899f;
+            bestparams.distance1 = 0.00962228701f;
+            bestparams.distance2 = 0.146903187f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
@@ -1357,20 +1360,20 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
-            // current score 5191 (238/32768) [RMS: -7.30]
-            bestparams.threshold = 0.926346302f;
-            bestparams.pulsestrength = 1.11291993f;
-            bestparams.distance1 = 1.0417254f;
-            bestparams.distance2 = 1.50533426f;
+            // current score 5167 (234/32768) [RMS: -7.30]
+            bestparams.threshold = 0.925685465f;
+            bestparams.pulsestrength = 1.11378157f;
+            bestparams.distance1 = 1.0397594f;
+            bestparams.distance2 = 1.50381863f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 6: // PS
-            // current score 11562 (454/32768) [RMS: -7.91]
-            bestparams.threshold = 0.926925302f;
-            bestparams.pulsestrength = 0.934966981f;
-            bestparams.topbit = 0.985450864f;
-            bestparams.distance1 = 0.0299737118f;
-            bestparams.distance2 = 0.384106278f;
+            // current score 11560 (453/32768) [RMS: -7.91]
+            bestparams.threshold = 0.926167309f;
+            bestparams.pulsestrength = 0.932631016f;
+            bestparams.topbit = 0.984126568f;
+            bestparams.distance1 = 0.0298364628f;
+            bestparams.distance2 = 0.384995401f;
             bestparams.distFunc = Parameters::quadraticDistance;
             break;
         case 7: // PST
@@ -1406,21 +1409,21 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 6: // PS
-            // current score 860 (1292/32768) [RMS: -8.29]
-            bestparams.threshold = 1.0222646f;
-            bestparams.pulsestrength = 3.66975141f;
-            bestparams.topbit = 1.36549771f;
-            bestparams.distance1 = 0.00202895817f;
-            bestparams.distance2 = 0.0821412951f;
+            // current score 860 (1288/32768) [RMS: -8.28]
+            bestparams.threshold = 1.02248156f;
+            bestparams.pulsestrength = 3.66920304f;
+            bestparams.topbit = 1.36571658f;
+            bestparams.distance1 = 0.00203792308f;
+            bestparams.distance2 = 0.0826661736f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
-            // current score 85 (370/32768) [RMS: -16.34]
-            bestparams.threshold = 0.942416549f;
-            bestparams.pulsestrength = 1.35665071f;
-            bestparams.topbit = 1.54389608f;
-            bestparams.distance1 = 0.154163897f;
-            bestparams.distance2 = 0.472713977f;
+            // current score 60 (412/32768) [RMS: -18.00]
+            bestparams.threshold = 0.886677682f;
+            bestparams.pulsestrength = 1.30265021f;
+            bestparams.topbit = 1.82846642f;
+            bestparams.distance1 = 0.131817579f;
+            bestparams.distance2 = 0.299035341f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         }
@@ -1431,11 +1434,11 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
         switch (wave)
         {
         case 3: // ST
-            // current score 2848 (1646/32768) [RMS: -9.30]
-            bestparams.threshold = 0.00245361845f;
-            bestparams.topbit = 0.399462789f;
-            bestparams.distance1 = 0.00235818862f;
-            bestparams.distance2 = 1.94512761f;
+            // current score 2720 (1639/32768) [RMS: -9.32]
+            bestparams.threshold = 0.00322450767f;
+            bestparams.topbit = 0.742047548f;
+            bestparams.distance1 = 0.00322453398f;
+            bestparams.distance2 = 1.98249948f;
             bestparams.distFunc = Parameters::exponentialDistance;
             break;
         case 5: // PT
@@ -1447,12 +1450,12 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 6: // PS
-            // current score 668 (2038/32768) [RMS: -9.52]
-            bestparams.threshold = 1.30860806f;
-            bestparams.pulsestrength = 4.26479483f;
-            bestparams.topbit = 0.763755977f;
-            bestparams.distance1 = 0.184508532f;
-            bestparams.distance2 = 0.209104061f;
+            // current score 668 (2037/32768) [RMS: -9.52]
+            bestparams.threshold = 1.30886745f;
+            bestparams.pulsestrength = 4.26684999f;
+            bestparams.topbit = 0.764546275f;
+            bestparams.distance1 = 0.184561312f;
+            bestparams.distance2 = 0.208998889f;
             bestparams.distFunc = Parameters::linearDistance;
             break;
         case 7: // PST
@@ -1489,6 +1492,7 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
      * waveform compared to the sampled data.
      */
     Parameters p = bestparams;
+    int loops = 0;
     for (;;)
     {
         // loop until at least one parameter has changed
@@ -1554,6 +1558,13 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             //p.reset();
             bestparams = p;
             bestscore = score;
+
+#ifdef CHANGE_DEV
+            loops = 0;
+            stddev = 0.0001;
+            std::normal_distribution<>::param_type param(1.0, stddev);
+            continue;
+#endif
         }
         else if (score.audible_error == bestscore.audible_error)
         {
@@ -1564,6 +1575,19 @@ static void Optimize(const ref_vector_t &reference, int wave, const char* chip)
             // no improvement but use new parameters as base to increase the "entropy"
             bestparams = p;
         }
+
+#ifdef CHANGE_DEV
+        loops++;
+        if (loops > 10000)
+        {
+            stddev *= 2;
+            if (stddev > 0.5)
+                exit(EXIT_FAILURE);
+            std::normal_distribution<>::param_type param(1.0, stddev);
+            normal_dist.param(param);
+            loops = 0;
+        }
+#endif
     }
 }
 
